@@ -1,9 +1,18 @@
 package game;
 
-public class Game {   
-    public String getWordToGuess() {
-        return "B_____";
+public class Game {
+    // String word;
+    
+    public Game(String word) {
     }
-
-    public static void main() {}
+    
+    public String getWordToGuess(String word) {
+        StringBuilder stringBuilder = new StringBuilder(word); 
+        
+        for (int i = 1; i < word.length(); i++) {
+            stringBuilder.replace(i, word.length(), "_");
+        } 
+        return stringBuilder.toString();
+    }
+    public static void main(String[] args) {}
 }

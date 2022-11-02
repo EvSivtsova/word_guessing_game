@@ -16,4 +16,11 @@ public class GameTest {
         Game game = new Game("MAKERS");
         assertEquals(game.getWordToGuess("MAKERS"), "M_____");
     }
+
+    @Test
+    public void testGetsTenInitialAttempts() {
+        Game game = new Game("MAKERS");
+        assertEquals(game.getWordToGuess("MAKERS"), "M_____");
+        assertEquals(game.getRemainingAttempts(), Integer.valueOf(10));
+    }
 }

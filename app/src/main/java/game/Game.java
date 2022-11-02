@@ -1,11 +1,16 @@
 package game;
 
 public class Game {
-    // String word;
+    Integer remainingAttempts;
     
     public Game(String word) {
+        this.remainingAttempts = 10;
     }
     
+    public Integer getRemainingAttempts() {
+        return this.remainingAttempts;
+    }
+
     public String getWordToGuess(String word) {
         StringBuilder stringBuilder = new StringBuilder(word); 
         

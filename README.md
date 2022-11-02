@@ -1,6 +1,6 @@
 # Word-guessing game
 
-This a Maker's challenge from course on Java - week 1.
+This is a Makers Academy challenge from three week course on Java - week 1.
 
 ## Specifications of the game
 

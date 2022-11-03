@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Game {
     Integer remainingAttempts;
     String word;
+    private ArrayList<Character> guessedLetters = new ArrayList<Character>();
     
     public Game(WordChoser wordChoser) {
         this.word = wordChoser.getRandomWordFromDictionary();
@@ -24,13 +25,14 @@ public class Game {
         return stringBuilder.toString();
     }
 
-    public Boolean guessLetter(char letter) {
-        char[] letters = this.word.toCharArray();
-        ArrayList<Character> lettersInWord = new ArrayList<Character>();
-        for (int i = 0; i < this.word.length(); i++) {
-            lettersInWord.add(letters[i]);
+    public Boolean guessLetter(Character letter) {
+        if (this.word.indexOf(letter) != - 1) {
+            guessedLetters.add(letter);
+            return true;
+        } else {
+            this.remainingAttempts -= 1;
+            return false;
         }
-        return lettersInWord.contains(letter);
     }
     
     public static void main(String[] args) {}

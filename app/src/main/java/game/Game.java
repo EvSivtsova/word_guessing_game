@@ -26,7 +26,7 @@ public class Game {
     }
 
     public Boolean guessLetter(Character letter) {
-        if (this.word.indexOf(letter) != - 1) {
+        if (this.word.indexOf(Character.toUpperCase(letter)) != - 1) {
             guessedLetters.add(letter);
             return true;
         } else {

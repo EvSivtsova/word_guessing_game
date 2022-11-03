@@ -51,4 +51,12 @@ public class GameTest {
         assertFalse("The word does not contain guessed letter", game.guessLetter('D'));
         assertEquals("The method should return 9 attempts after one guess", game.getRemainingAttempts(), Integer.valueOf(9));
     }
+
+    @Test
+    public void testChecksForGuessedLowerCaseLetter() {
+        WordChoser mockedWChooser = mock(WordChoser.class);
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        Game game = new Game(mockedWChooser);
+        assertTrue("The word contains guessed letter", game.guessLetter('a'));
+    }
 }

@@ -59,4 +59,14 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         assertTrue("The word contains guessed letter", game.guessLetter('a'));
     }
+
+    @Test
+    public void testGetsWordWithGuessedLetters() {
+        WordChoser mockedWChooser = mock(WordChoser.class);
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        Game game = new Game(mockedWChooser);
+        String word = "MA____";
+        game.guessLetter('A');
+        assertEquals("Returns word with guessed letters", word, game.getWordToGuess());
+    }
 }

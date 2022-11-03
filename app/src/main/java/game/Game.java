@@ -20,7 +20,10 @@ public class Game {
         StringBuilder stringBuilder = new StringBuilder(this.word); 
         
         for (int i = 1; i < this.word.length(); i++) {
-            stringBuilder.replace(i, this.word.length() - 1, "_");
+            Character letter = stringBuilder.charAt(i);
+            if (this.guessedLetters.indexOf(letter) == -1) {
+                stringBuilder.replace(i, i + 1, "_");
+            }
         } 
         return stringBuilder.toString();
     }

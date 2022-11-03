@@ -12,7 +12,7 @@ public class GameTest {
         WordChoser mockedWChooser = mock(WordChoser.class);
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("BAKERS");
         Game game = new Game(mockedWChooser);
-        assertEquals("The method should return mocked word", game.getWordToGuess(), "B_____");
+        assertEquals("The method should return mocked word", "B_____", game.getWordToGuess());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         String word = "M_____";
         
-        assertEquals("The method should return mocked word2", game.getWordToGuess(), word);
+        assertEquals("The method should return mocked word2", word, game.getWordToGuess());
     }
     
     @Test
@@ -32,7 +32,7 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         String word = "M_____";
         assertEquals("The method should return mocked word", game.getWordToGuess(), word);
-        assertEquals("The method should return 10 initial attempts", game.getRemainingAttempts(), Integer.valueOf(10));
+        assertEquals("The method should return 10 initial attempts", Integer.valueOf(10), game.getRemainingAttempts());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class GameTest {
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         Game game = new Game(mockedWChooser);
         assertFalse("The word does not contain guessed letter", game.guessLetter('D'));
-        assertEquals("The method should return 9 attempts after one guess", game.getRemainingAttempts(), Integer.valueOf(9));
+        assertEquals("The method should return 9 attempts after one guess", Integer.valueOf(9), game.getRemainingAttempts());
     }
 
     @Test

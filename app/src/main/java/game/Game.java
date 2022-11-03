@@ -2,8 +2,10 @@ package game;
 
 public class Game {
     Integer remainingAttempts;
+    String word;
     
-    public Game(String word) {
+    public Game(WordChoser wordChoser) {
+        this.word = wordChoser.getRandomWordFromDictionary();
         this.remainingAttempts = 10;
     }
     
@@ -11,11 +13,11 @@ public class Game {
         return this.remainingAttempts;
     }
 
-    public String getWordToGuess(String word) {
-        StringBuilder stringBuilder = new StringBuilder(word); 
+    public String getWordToGuess() {
+        StringBuilder stringBuilder = new StringBuilder(this.word); 
         
-        for (int i = 1; i < word.length(); i++) {
-            stringBuilder.replace(i, word.length(), "_");
+        for (int i = 1; i < this.word.length(); i++) {
+            stringBuilder.replace(i, this.word.length() - 1, "_");
         } 
         return stringBuilder.toString();
     }

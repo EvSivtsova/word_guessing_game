@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 public class Game {
     Integer remainingAttempts;
     String word;
@@ -21,5 +23,15 @@ public class Game {
         } 
         return stringBuilder.toString();
     }
+
+    public Boolean guessLetter(char letter) {
+        char[] letters = this.word.toCharArray();
+        ArrayList<Character> lettersInWord = new ArrayList<Character>();
+        for (int i = 0; i < this.word.length(); i++) {
+            lettersInWord.add(letters[i]);
+        }
+        return lettersInWord.contains(letter);
+    }
+    
     public static void main(String[] args) {}
 }

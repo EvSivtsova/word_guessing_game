@@ -58,6 +58,7 @@ public class GameTest {
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         Game game = new Game(mockedWChooser);
         assertTrue("The word contains guessed letter", game.guessLetter('a'));
+        assertTrue("The guessLetters array contains guessed letter", game.guessedLetters.indexOf('a') == -1);
     }
 
     @Test

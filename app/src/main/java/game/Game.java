@@ -1,11 +1,12 @@
 package game;
 
 import java.util.ArrayList;
+// import java.util.Scanner;  
 
 public class Game {
     Integer remainingAttempts;
     String word;
-    private ArrayList<Character> guessedLetters = new ArrayList<Character>();
+    ArrayList<Character> guessedLetters = new ArrayList<Character>();
     
     public Game(WordChoser wordChoser) {
         this.word = wordChoser.getRandomWordFromDictionary();
@@ -28,8 +29,9 @@ public class Game {
         return stringBuilder.toString();
     }
 
-    public Boolean guessLetter(Character letter) {
-        if (this.word.indexOf(Character.toUpperCase(letter)) != - 1) {
+    public Boolean guessLetter(Character guessedLetter) {
+        Character letter = Character.toUpperCase(guessedLetter);
+        if (this.word.indexOf(letter) != - 1) {
             guessedLetters.add(letter);
             return true;
         } else {

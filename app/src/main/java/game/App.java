@@ -3,6 +3,8 @@
  */
 package game;
 
+import java.util.Scanner;  
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -10,5 +12,18 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        Game game = new Game(new WordChoser());
+        System.out.printf("Welcome! Today the word to guess is:");
+        while (game.remainingAttempts > 0) {
+            System.out.println(game.getWordToGuess());
+            System.out.printf("Enter one letter to guess (%d attemps remaining):\n", game.remainingAttempts);
+            Scanner scanner = new Scanner(System.in);
+            Character guessedLetter = scanner.nextLine().charAt(0);
+            if (game.guessLetter(guessedLetter)) {
+                System.out.println("Right!");
+            } else {
+                System.out.println("Wrong...");
+            }
+        }
     }
 }

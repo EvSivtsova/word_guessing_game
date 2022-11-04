@@ -12,5 +12,8 @@ public class WordChoser {
 
         return DICTIONNARY[index];
     }
+
+    public static void main() {}
+
 }
 

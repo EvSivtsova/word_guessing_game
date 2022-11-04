@@ -6,32 +6,37 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+
 public class GameTest {
     @Test
     public void testGetsWordToGuess() {
-        WordChoser mockedWChooser = mock(WordChoser.class);
-        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("BAKERS");
-        Game game = new Game(mockedWChooser);
-        assertEquals("The method should return mocked word", "B_____", game.getWordToGuess());
-    }
+        String wordToGuess = "MAKERS";
+        String expectedResult = "M_____";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
 
-    @Test
-    public void testGetsWordToGuess2() {
         WordChoser mockedWChooser = mock(WordChoser.class);
-        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
+        Masker mockedMasker = mock(Masker.class);
+        when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
+
         Game game = new Game(mockedWChooser);
-        String word = "M_____";
-        
-        assertEquals("The method should return mocked word2", word, game.getWordToGuess());
+        assertEquals("The method should return mocked word", expectedResult, game.getWordToGuess(mockedMasker));
     }
     
     @Test
     public void testGetsTenInitialAttempts() {
+        String wordToGuess = "MAKERS";
+        String expectedResult = "M_____";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
+
         WordChoser mockedWChooser = mock(WordChoser.class);
-        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
+        Masker mockedMasker = mock(Masker.class);
+        when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
+        
         Game game = new Game(mockedWChooser);
-        String word = "M_____";
-        assertEquals("The method should return mocked word", game.getWordToGuess(), word);
+        assertEquals("The method should return mocked word", expectedResult, game.getWordToGuess(mockedMasker));
         assertEquals("The method should return 10 initial attempts", Integer.valueOf(10), game.getRemainingAttempts());
     }
 
@@ -63,11 +68,18 @@ public class GameTest {
 
     @Test
     public void testGetsWordWithGuessedLetters() {
+        String wordToGuess = "MAKERS";
+        String expectedResult = "M_A___";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
+        guessedLetters.add('A');
+
         WordChoser mockedWChooser = mock(WordChoser.class);
-        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
+        Masker mockedMasker = mock(Masker.class);
+        when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
+
         Game game = new Game(mockedWChooser);
-        String word = "MA____";
         game.guessLetter('A');
-        assertEquals("Returns word with guessed letters", word, game.getWordToGuess());
+        assertEquals("Returns word with guessed letters", expectedResult, game.getWordToGuess(mockedMasker));
     }
 }

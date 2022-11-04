@@ -14,10 +14,10 @@ public class App {
         System.out.println(new App().getGreeting());
         Game game = new Game(new WordChoser());
         System.out.printf("Welcome! Today the word to guess is:");
+        Scanner scanner = new Scanner(System.in);
         while (game.remainingAttempts > 0) {
-            System.out.println(game.getWordToGuess());
+            System.out.println(game.getWordToGuess(new Masker()));
             System.out.printf("Enter one letter to guess (%d attemps remaining):\n", game.remainingAttempts);
-            Scanner scanner = new Scanner(System.in);
             Character guessedLetter = scanner.nextLine().charAt(0);
             if (game.guessLetter(guessedLetter)) {
                 System.out.println("Right!");
@@ -25,5 +25,6 @@ public class App {
                 System.out.println("Wrong...");
             }
         }
+        scanner.close();
     }
 }

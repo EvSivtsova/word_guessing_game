@@ -45,8 +45,8 @@ cd word_guessing_game
 ```
 Run the program and test directly from corresponding files:<br>
 
-To play the game: `app/bin/main/game/App.java`<br>
+To play the game: `app/src/main/java/game/App.java`<br>
 
-To run tests: `app/bin/test/game`<br>
+To run tests: `app/src/test/java/game`<br>
 
 <img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/game_output.png"/>

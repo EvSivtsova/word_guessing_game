@@ -29,4 +29,21 @@ public class MaskerTest {
 
         assertEquals("Returns word with guessed letters unmasked", expectedResult, result);
     }
+
+    @Test
+    public void testUnveilsTheWordWhenItIsGuessed() {
+        String wordToGuess = "MAKERS";
+        String expectedResult = "MAKERS";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
+        guessedLetters.add('A');
+        guessedLetters.add('K');
+        guessedLetters.add('E');
+        guessedLetters.add('R');
+        guessedLetters.add('S');
+
+        Masker masker = new Masker();
+        String result = masker.getMaskedWord(wordToGuess, guessedLetters);
+
+        assertEquals("Returns unveiled word when all the letters have been guessed", expectedResult, result);
+    }
 }

@@ -3,7 +3,7 @@ package game;
 import java.util.Random;
 
 public class WordChoser {
-    public static final String[] DICTIONNARY = {"MAKERS", "CANDIES", "DEVELOPER", "LONDON"};
+    private static final String[] DICTIONNARY = {"MAKERS", "CANDIES", "DEVELOPER", "LONDON"};
 
     public String getRandomWordFromDictionary() {
         Integer maxIndex = DICTIONNARY.length;
@@ -12,8 +12,8 @@ public class WordChoser {
 
         return DICTIONNARY[index];
     }
-
-    public static void main() {}
+//
+//    public static void main() {}
 
 }
 

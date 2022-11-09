@@ -63,7 +63,7 @@ public class GameTest {
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         Game game = new Game(mockedWChooser);
         assertTrue("The word contains guessed letter", game.guessLetter('a'));
-        assertTrue("The guessLetters array contains guessed letter", game.guessedLetters.indexOf('a') == -1);
+        assertTrue("The guessLetters array contains guessed letter", game.getGuessedLetters().indexOf('a') == -1);
     }
 
     @Test
@@ -105,7 +105,8 @@ public class GameTest {
         game.guessLetter('E');
         game.guessLetter('R');
         game.guessLetter('S');
-        game.getWordToGuess(mockedMasker);
+        String resultWord = game.getWordToGuess(mockedMasker);
+        assertEquals("Returns word with guessed letters", expectedResult, resultWord);
         assertFalse("Returns word with guessed letters", game.on());
     }
 }

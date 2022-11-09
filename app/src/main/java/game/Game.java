@@ -3,10 +3,9 @@ package game;
 import java.util.ArrayList;
 
 public class Game {
-    Integer remainingAttempts;
-    String word;
-    ArrayList<Character> guessedLetters = new ArrayList<Character>();
-    String maskedWord;
+    private Integer remainingAttempts;
+    private String word;
+    private ArrayList<Character> guessedLetters = new ArrayList<Character>();
     
     public Game(WordChoser wordChoser) {
         this.word = wordChoser.getRandomWordFromDictionary();
@@ -16,6 +15,8 @@ public class Game {
     public Integer getRemainingAttempts() {
         return this.remainingAttempts;
     }
+
+    public ArrayList<Character> getGuessedLetters(){ return this.guessedLetters; }
 
     public String getWordToGuess(Masker masker) {
         return masker.getMaskedWord(this.word, guessedLetters);
@@ -33,10 +34,13 @@ public class Game {
     }
 
     public Boolean on() {
-        return guessedLetters.size() != (this.word.length() - 1);
-    
+        char firstLetter = this.word.charAt(0);
+        if (this.guessedLetters.contains(firstLetter) == true) {
+            this.guessedLetters.remove(firstLetter);
+        }
+        return this.guessedLetters.size() != (this.word.length() - 1);
     }
-
-    
-    public static void main(String[] args) {}
+//
+//
+//    public static void main(String[] args) {}
 }

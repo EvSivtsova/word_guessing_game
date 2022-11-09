@@ -40,7 +40,4 @@ public class Game {
         }
         return this.guessedLetters.size() != (this.word.length() - 1);
     }
-//
-//
-//    public static void main(String[] args) {}
 }

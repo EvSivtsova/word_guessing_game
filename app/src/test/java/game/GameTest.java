@@ -189,4 +189,18 @@ public class GameTest {
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
         assertTrue("Returns that the game is not on anymore", game.gameOver());
     }
+
+    @Test
+    public void testAddPlayerName() {
+        String wordToGuess = "LONDON";
+        WordChoser mockedWChooser = mock(WordChoser.class);
+
+        String name = "Alex";
+        String expectedResult = "Alex";
+
+        Game game = new Game(mockedWChooser);
+        assertEquals("Returns the word with guessed letters", null, game.getName());
+        game.setName(name);
+        assertEquals("Returns the word with guessed letters", expectedResult, game.getName());
+    }
 }

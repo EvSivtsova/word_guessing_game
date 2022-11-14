@@ -6,6 +6,7 @@ public class Game {
     private Integer remainingAttempts;
     private final String word;
     private final ArrayList<Character> guessedLetters = new ArrayList<Character>();
+    private String name;
     
     public Game(WordChoser wordChoser) {
         this.word = wordChoser.getRandomWordFromDictionary();
@@ -47,5 +48,12 @@ public class Game {
 
     public Boolean gameOver() {
         return this.gameWon() || this.remainingAttempts < 1;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String playerName) {
+        this.name = playerName;
     }
 }

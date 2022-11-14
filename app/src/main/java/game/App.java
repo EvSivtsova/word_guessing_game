@@ -88,7 +88,7 @@ public class App {
            }
         }  while (app.twoPlayerGameOn());
        scanner.close();
-       String textColour = app.winner == 0 ? ANSI_GREEN : ANSI_YELLOW;
+       String textColour = app.loser == 1 ? ANSI_GREEN : ANSI_YELLOW;
        System.out.printf("%s%s       Congratulations, Player %d! You won!        %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, app.winner, ANSI_RESET);
        System.out.printf("%sPlayer %d, you lost this time! Try your luck again!%s\n", textColour, app.loser, ANSI_RESET );
     }

@@ -34,17 +34,12 @@ public class Game {
     }
 
     public Boolean on() {
-        char firstLetter = this.word.charAt(0);
-        if (this.guessedLetters.contains(firstLetter) == true) {
-            this.guessedLetters.remove(firstLetter);
-        }
-        String wordToGuess = this.word;
-        for (int  i = 1; i < wordToGuess.length(); i++) {
-            if (this.guessedLetters.contains(wordToGuess.charAt(i)) == false ) {
-                break;
+        for (int i = 1; i < this.word.length(); i++) {
+            char letter = this.word.charAt(i);
+            if (!this.guessedLetters.contains(letter)) {
+                return true;
             }
-            return false;
         }
-        return true;
+        return false;
     }
 }

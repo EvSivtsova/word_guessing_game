@@ -84,7 +84,7 @@ public class GameTest {
     }
 
     @Test
-    public void testEndsGameWhenWordIsGuessed() {
+    public void testEndsGame_WhenWordIsGuessed() {
         String wordToGuess = "MAKERS";
         String expectedResult = "MAKERS";
         ArrayList<Character> guessedLetters = new ArrayList<Character>();
@@ -106,7 +106,30 @@ public class GameTest {
         game.guessLetter('R');
         game.guessLetter('S');
         String resultWord = game.getWordToGuess(mockedMasker);
-        assertEquals("Returns word with guessed letters", expectedResult, resultWord);
-        assertFalse("Returns word with guessed letters", game.on());
+        assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
+        assertFalse("Returns that the game is not on anymore", game.on());
+    }
+
+    @Test
+    public void testEndsGame_WhenWordIsGuessed_RepetitiveLetters() {
+        String wordToGuess = "LONDON";
+        String expectedResult = "LONDON";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
+        guessedLetters.add('O');
+        guessedLetters.add('N');
+        guessedLetters.add('D');
+
+        WordChoser mockedWChooser = mock(WordChoser.class);
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
+        Masker mockedMasker = mock(Masker.class);
+        when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
+
+        Game game = new Game(mockedWChooser);
+        game.guessLetter('O');
+        game.guessLetter('N');
+        game.guessLetter('D');
+        String resultWord = game.getWordToGuess(mockedMasker);
+        assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
+        assertFalse("Returns that the game is not on anymore", game.on());
     }
 }

@@ -38,6 +38,13 @@ public class Game {
         if (this.guessedLetters.contains(firstLetter) == true) {
             this.guessedLetters.remove(firstLetter);
         }
-        return this.guessedLetters.size() != (this.word.length() - 1);
+        String wordToGuess = this.word;
+        for (int  i = 1; i < wordToGuess.length(); i++) {
+            if (this.guessedLetters.contains(wordToGuess.charAt(i)) == false ) {
+                break;
+            }
+            return false;
+        }
+        return true;
     }
 }

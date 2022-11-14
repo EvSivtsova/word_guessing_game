@@ -53,6 +53,7 @@ public class Game {
     public String getName() {
         return this.name;
     }
+
     public void setName(String playerName) {
         this.name = playerName;
     }

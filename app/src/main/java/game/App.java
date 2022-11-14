@@ -62,12 +62,14 @@ public class App {
 
     public static void main(String[] args) {
         App app = new App();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the name for player 1:" );
+        app.players[0].setName(scanner.nextLine());
 
         System.out.println(ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET);
         System.out.printf(ANSI_GREEN + "Player %d: %s\n", 1, app.players[0].getWordToGuess(new Masker()) + ANSI_RESET);
         System.out.printf(ANSI_YELLOW + "Player %d: %s\n\n", 2, app.players[1].getWordToGuess(new Masker()) + ANSI_RESET);
 
-        Scanner scanner = new Scanner(System.in);
         do {
            byte playerNumber = 1;
            String textColour = ANSI_GREEN;

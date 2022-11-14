@@ -62,15 +62,17 @@ public class App {
 
     public static void main(String[] args) {
         App app = new App();
+        app.player1 = app.players[0];
+        app.player2 = app.players[1];
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the name for player 1:" );
-        app.players[0].setName(scanner.nextLine());
+        System.out.println("\nPlease enter the name for player 1:" );
+        app.player1.setName(scanner.nextLine());
         System.out.println("Please enter the name for player 2:" );
-        app.players[1].setName(scanner.nextLine());
+        app.player2.setName(scanner.nextLine());
 
         System.out.println(ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET);
-        System.out.printf(ANSI_GREEN + "Player %d: %s\n", 1, app.players[0].getWordToGuess(new Masker()) + ANSI_RESET);
-        System.out.printf(ANSI_YELLOW + "Player %d: %s\n\n", 2, app.players[1].getWordToGuess(new Masker()) + ANSI_RESET);
+        System.out.printf(ANSI_GREEN + "Player %d: %s\n", 1, app.player1.getWordToGuess(new Masker()) + ANSI_RESET);
+        System.out.printf(ANSI_YELLOW + "Player %d: %s\n\n", 2, app.player2.getWordToGuess(new Masker()) + ANSI_RESET);
 
         do {
            byte playerNumber = 1;

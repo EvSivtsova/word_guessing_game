@@ -65,6 +65,8 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the name for player 1:" );
         app.players[0].setName(scanner.nextLine());
+        System.out.println("Please enter the name for player 2:" );
+        app.players[1].setName(scanner.nextLine());
 
         System.out.println(ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET);
         System.out.printf(ANSI_GREEN + "Player %d: %s\n", 1, app.players[0].getWordToGuess(new Masker()) + ANSI_RESET);

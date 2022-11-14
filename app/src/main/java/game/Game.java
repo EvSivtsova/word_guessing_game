@@ -4,19 +4,21 @@ import java.util.ArrayList;
 
 public class Game {
     private Integer remainingAttempts;
-    private String word;
-    private ArrayList<Character> guessedLetters = new ArrayList<Character>();
+    private final String word;
+    private final ArrayList<Character> guessedLetters = new ArrayList<Character>();
     
     public Game(WordChoser wordChoser) {
         this.word = wordChoser.getRandomWordFromDictionary();
         this.remainingAttempts = 10;
     }
     
-    public Integer getRemainingAttempts() {
+    public Integer getRemainingAttempts(){
         return this.remainingAttempts;
     }
 
-    public ArrayList<Character> getGuessedLetters(){ return this.guessedLetters; }
+    public ArrayList<Character> getGuessedLetters(){
+        return this.guessedLetters;
+    }
 
     public String getWordToGuess(Masker masker) {
         return masker.getMaskedWord(this.word, guessedLetters);
@@ -41,5 +43,9 @@ public class Game {
             }
         }
         return false;
+    }
+
+    public Boolean gameOver() {
+        return !this.on() || this.remainingAttempts < 1;
     }
 }

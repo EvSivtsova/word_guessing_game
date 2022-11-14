@@ -138,4 +138,55 @@ public class GameTest {
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
         assertFalse("Returns that the game is not on anymore", game.on());
     }
+
+    @Test
+    public void testGameOver_WhenWordIsGuessed() {
+        String wordToGuess = "LONDON";
+        String expectedResult = "LONDON";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
+        guessedLetters.add('O');
+        guessedLetters.add('N');
+        guessedLetters.add('D');
+
+        WordChoser mockedWChooser = mock(WordChoser.class);
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
+        Masker mockedMasker = mock(Masker.class);
+        when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
+
+        Game game = new Game(mockedWChooser);
+        game.guessLetter('O');
+        game.guessLetter('N');
+        game.guessLetter('D');
+        String resultWord = game.getWordToGuess(mockedMasker);
+        assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
+        assertTrue("Returns that the game is not on anymore", game.gameOver());
+    }
+
+    @Test
+    public void testGameOver_WhenZeroAttempsLeft() {
+        String wordToGuess = "LONDON";
+        String expectedResult = "L_____";
+        ArrayList<Character> guessedLetters = new ArrayList<Character>();
+
+
+        WordChoser mockedWChooser = mock(WordChoser.class);
+        when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
+        Masker mockedMasker = mock(Masker.class);
+        when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
+
+        Game game = new Game(mockedWChooser);
+        game.guessLetter('Z');
+        game.guessLetter('H');
+        game.guessLetter('V');
+        game.guessLetter('W');
+        game.guessLetter('E');
+        game.guessLetter('I');
+        game.guessLetter('K');
+        game.guessLetter('S');
+        game.guessLetter('T');
+        game.guessLetter('U');
+        String resultWord = game.getWordToGuess(mockedMasker);
+        assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
+        assertTrue("Returns that the game is not on anymore", game.gameOver());
+    }
 }

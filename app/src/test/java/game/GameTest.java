@@ -22,7 +22,7 @@ public class GameTest {
 
         Game game = new Game(mockedWChooser);
         assertEquals("The method should return mocked word", expectedResult, game.getWordToGuess(mockedMasker));
-        assertTrue("Returns that the game continues", game.on());
+        assertFalse("Returns that the game continues", game.gameWon());
     }
     
     @Test
@@ -39,7 +39,7 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         assertEquals("The method should return mocked word", expectedResult, game.getWordToGuess(mockedMasker));
         assertEquals("The method should return 10 initial attempts", Integer.valueOf(10), game.getRemainingAttempts());
-        assertTrue("Returns that the game continues", game.on());
+        assertFalse("Returns that the game continues", game.gameWon());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class GameTest {
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         Game game = new Game(mockedWChooser);
         assertTrue("The word contains guessed letter", game.guessLetter('A'));
-        assertTrue("Returns that the game continues", game.on());
+        assertFalse("Returns that the game continues", game.gameWon());
     }
       
     @Test
@@ -58,7 +58,7 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         assertFalse("The word does not contain guessed letter", game.guessLetter('D'));
         assertEquals("The method should return 9 attempts after one guess", Integer.valueOf(9), game.getRemainingAttempts());
-        assertTrue("Returns that the game continues", game.on());
+        assertFalse("Returns that the game continues", game.gameWon());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         assertTrue("The word contains guessed letter", game.guessLetter('a'));
         assertTrue("The guessLetters array contains guessed letter", game.getGuessedLetters().indexOf('a') == -1);
-        assertTrue("Returns that the game continues", game.on());
+        assertFalse("Returns that the game continues", game.gameWon());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class GameTest {
         Game game = new Game(mockedWChooser);
         game.guessLetter('A');
         assertEquals("Returns word with guessed letters", expectedResult, game.getWordToGuess(mockedMasker));
-        assertTrue("Returns that the game continues", game.on());
+        assertFalse("Returns that the game continues", game.gameWon());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class GameTest {
         game.guessLetter('S');
         String resultWord = game.getWordToGuess(mockedMasker);
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
-        assertFalse("Returns that the game is not on anymore", game.on());
+        assertTrue("Returns that the game is not on anymore", game.gameWon());
     }
 
     @Test
@@ -136,7 +136,7 @@ public class GameTest {
         game.guessLetter('D');
         String resultWord = game.getWordToGuess(mockedMasker);
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
-        assertFalse("Returns that the game is not on anymore", game.on());
+        assertTrue("Returns that the game is not on anymore", game.gameWon());
     }
 
     @Test

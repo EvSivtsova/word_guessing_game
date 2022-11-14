@@ -35,17 +35,17 @@ public class Game {
         }
     }
 
-    public Boolean on() {
+    public Boolean gameWon() {
         for (int i = 1; i < this.word.length(); i++) {
             char letter = this.word.charAt(i);
             if (!this.guessedLetters.contains(letter)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public Boolean gameOver() {
-        return !this.on() || this.remainingAttempts < 1;
+        return this.gameWon() || this.remainingAttempts < 1;
     }
 }

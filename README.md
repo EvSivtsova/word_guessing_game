@@ -49,4 +49,10 @@ To play the game: `app/src/main/java/game/App.java`<br>
 
 To run tests: `app/src/test/java/game`<br>
 
-<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/game_output.png"/>
+## One player game
+
+<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/outputs/one_player_game_output.png">
+
+## Two player game
+
+<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/outputs/two_player_game_output.png">

@@ -24,6 +24,8 @@ public class TwoPlayerGame{
         return this.players[this.winner - 1].getPlayerName();
     }
 
+    public String getLosersName() { return this.players[this.loser - 1].getPlayerName(); }
+
     public byte getWinner() {
         return this.winner;
     }

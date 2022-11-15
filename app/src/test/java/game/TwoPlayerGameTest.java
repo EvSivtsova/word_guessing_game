@@ -11,6 +11,19 @@ import static org.mockito.Mockito.when;
 public class TwoPlayerGameTest {
     Game mockedGame1 = mock(Game.class);
     Game mockedGame2 = mock(Game.class);
+
+    @Test
+    public void testAssignsPlayerOrder() {
+        Game[] players =  {mockedGame1, mockedGame2};
+
+        TwoPlayerGame game = new TwoPlayerGame();
+        assertNull(game.getPlayers()[0]);
+        assertNull(game.getPlayers()[1]);
+        game.assignPlayerOrder(players);
+        assertNotNull(game.getPlayers()[0]);
+        assertNotNull(game.getPlayers()[1]);
+    }
+
     @Test
     public void testGameIsOn_WhenNoPlayerLostOrWon() {
         when(mockedGame1.gameOver()).thenReturn(false);
@@ -48,7 +61,8 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        game.identifyWinner(players);
+        game.assignPlayerOrder(players);
+        game.identifyWinner();
         assertEquals("The first player is the winner if they won the game.", 1, game.getWinner());
         assertEquals("The second player lost if the first player won the game.", 2, game.getLoser());
     }
@@ -60,7 +74,8 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        game.identifyWinner(players);
+        game.assignPlayerOrder(players);
+        game.identifyWinner();
         assertEquals("The second player is the winner if they won the game.", 2, game.getWinner());
         assertEquals("The first player lost if the second player won the game.", 1, game.getLoser());
     }
@@ -72,7 +87,8 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        game.identifyWinner(players);
+        game.assignPlayerOrder(players);
+        game.identifyWinner();
         assertEquals("The first player is the winner if the second player lost the game.", 1, game.getWinner());
         assertEquals("The second player is the loser if they lost the game.", 2, game.getLoser());
     }
@@ -84,20 +100,9 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        game.identifyWinner(players);
+        game.assignPlayerOrder(players);
+        game.identifyWinner();
         assertEquals("The second player is the winner if the first player lost the game.", 2, game.getWinner());
         assertEquals("The first player is the loser if they lost the game.", 1, game.getLoser());
-    }
-
-    @Test
-    public void testAssignsPlayerOrder() {
-        Game[] players =  {mockedGame1, mockedGame2};
-
-        TwoPlayerGame game = new TwoPlayerGame();
-        assertNull(game.getPlayers()[0]);
-        assertNull(game.getPlayers()[1]);
-        game.assignPlayerOrder(players);
-        assertNotNull(game.getPlayers()[0]);
-        assertNotNull(game.getPlayers()[1]);
     }
 }

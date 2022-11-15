@@ -27,15 +27,15 @@ public class TwoPlayerGame{
     public byte getLoser() {
         return this.loser;
     }
-    public void identifyWinner(Game[] players) {
-        for (byte i = 0; i < players.length; i++ ) {
-            if (players[i].gameWon()) {
+    public void identifyWinner() {
+        for (byte i = 0; i < this.players.length; i++ ) {
+            if (this.players[i].gameWon()) {
                 this.winner = (byte) (i + 1);
-                this.loser = (byte) (players.length - this.winner + 1);
+                this.loser = (byte) (this.players.length - this.winner + 1);
             } else {
                 if (players[i].getRemainingAttempts() < 1) {
                     this.loser = (byte) (i + 1);
-                    this.winner = (byte) (players.length - this.loser + 1);
+                    this.winner = (byte) (this.players.length - this.loser + 1);
                 }
             }
         }

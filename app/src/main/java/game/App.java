@@ -28,36 +28,33 @@ public class App {
             Game player1 = new Game(new WordChoser(), player1Name);
             System.out.println("Please enter the name for player 2:");
             String player2Name = scanner.nextLine();
-
             Game player2 = new Game(new WordChoser(), player2Name);
             Game[] players =  {player1, player2};
             game.assignPlayerOrder(players);
 
             System.out.println(ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET);
-            System.out.printf(ANSI_GREEN + "Player %d: %s\n", 1, game.getPlayers()[0].getWordToGuess(new Masker()) + ANSI_RESET);
-            System.out.printf(ANSI_YELLOW + "Player %d: %s\n\n", 2, game.getPlayers()[1].getWordToGuess(new Masker()) + ANSI_RESET);
+            System.out.println(ANSI_GREEN + game.getPlayers()[0].getPlayerName() + ": " + game.getPlayers()[0].getWordToGuess(new Masker()) + ANSI_RESET);
+            System.out.println(ANSI_YELLOW + game.getPlayers()[1].getPlayerName() + ": " + game.getPlayers()[1].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
 
             do {
-                byte playerNumber = 1;
                 String textColour = ANSI_GREEN;
                 for (byte i = 0; i < game.getPlayers().length; i++) {
-                    System.out.printf(textColour + "Player %d:" + ANSI_RESET + " Enter one letter to guess (%d attempts remaining):\n ", playerNumber, game.getPlayers()[i].getRemainingAttempts());
+                    System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, game.getPlayers()[i].getPlayerName(), ANSI_RESET, game.getPlayers()[i].getRemainingAttempts());
                     Character guessedLetter = scanner.nextLine().charAt(0);
                     if (game.getPlayers()[i].guessLetter(guessedLetter)) {
                         System.out.println("Right!");
                     } else {
                         System.out.println("Wrong...");
                     }
-                    System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + "\n" + ANSI_RESET);
+                    System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
                     if (!game.twoPlayerGameOn(game.getPlayers())) {
                         break;
                     }
                     textColour = ANSI_YELLOW;
-                    playerNumber++;
                 }
             } while (game.twoPlayerGameOn(game.getPlayers()));
             scanner.close();
-            game.identifyWinner(game.getPlayers());
+            game.identifyWinner();
             String textColour = game.getLoser() == 1 ? ANSI_GREEN : ANSI_YELLOW;
             System.out.printf("%s%s       Congratulations, Player %d! You won!        %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, game.getWinner(), ANSI_RESET);
             System.out.printf("%sPlayer %d, you lost this time! Try your luck again!%s\n", textColour, game.getLoser(), ANSI_RESET);

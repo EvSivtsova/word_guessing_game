@@ -20,7 +20,26 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nPlease enter the number of players: 1 or 2");
         Integer numberOfPlayers = Integer.valueOf(scanner.nextLine());
-        if (numberOfPlayers == 2) {
+        if (numberOfPlayers == 1) {
+            System.out.println("\nPlease enter your name:");
+            String playerName = scanner.nextLine();
+            Game game = new Game(new WordChoser(), playerName);
+            System.out.printf("\n%sWelcome, %s! Today the word to guess is:%s\n\n", ANSI_BLUE, game.getPlayerName(), ANSI_RESET);
+            do { System.out.println(ANSI_GREEN + game.getWordToGuess(new Masker()) + ANSI_RESET + "\n");
+                System.out.printf("Enter one letter to guess (%d attempts remaining):\n", game.getRemainingAttempts());
+                Character guessedLetter = scanner.nextLine().charAt(0);
+                if (game.guessLetter(guessedLetter)) {
+                    System.out.println("Right!\n");
+                } else {
+                    System.out.println("Wrong...\n");
+                }
+            } while (game.getRemainingAttempts() > 0 && !game.gameWon());
+            if (game.gameWon() == true) {
+                System.out.printf("%s%s   Congratulations, %s! You won!   %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, game.getPlayerName(), ANSI_RESET);
+            } else {
+                System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", ANSI_YELLOW, game.getPlayerName(), ANSI_RESET);
+            }
+        } else if (numberOfPlayers == 2) {
             TwoPlayerGame game = new TwoPlayerGame();
 
             System.out.println("\nPlease enter the name for player 1:");

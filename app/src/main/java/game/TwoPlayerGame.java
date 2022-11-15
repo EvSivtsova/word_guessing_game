@@ -20,6 +20,10 @@ public class TwoPlayerGame{
         return this.players;
     }
 
+    public String getWinnersName() {
+        return this.players[this.winner - 1].getPlayerName();
+    }
+
     public byte getWinner() {
         return this.winner;
     }

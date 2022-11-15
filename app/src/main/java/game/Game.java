@@ -8,9 +8,10 @@ public class Game {
     private final ArrayList<Character> guessedLetters = new ArrayList<Character>();
     private String name;
     
-    public Game(WordChoser wordChoser) {
+    public Game(WordChoser wordChoser, String playerName) {
         this.word = wordChoser.getRandomWordFromDictionary();
         this.remainingAttempts = 10;
+        this.name = playerName;
     }
     
     public Integer getRemainingAttempts(){
@@ -50,11 +51,7 @@ public class Game {
         return this.gameWon() || this.remainingAttempts < 1;
     }
 
-    public String getName() {
+    public String getPlayerName() {
         return this.name;
-    }
-
-    public void setName(String playerName) {
-        this.name = playerName;
     }
 }

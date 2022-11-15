@@ -20,9 +20,12 @@ public class GameTest {
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
 
-        Game game = new Game(mockedWChooser);
+        String name = "Alex";
+        String expectedName = "Alex";
+        Game game = new Game(mockedWChooser, name);
         assertEquals("The method should return mocked word", expectedResult, game.getWordToGuess(mockedMasker));
         assertFalse("Returns that the game continues", game.gameWon());
+        assertEquals("The name of the player is getting set", expectedName, game.getPlayerName());
     }
     
     @Test
@@ -35,8 +38,9 @@ public class GameTest {
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn(wordToGuess);
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
-        
-        Game game = new Game(mockedWChooser);
+
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         assertEquals("The method should return mocked word", expectedResult, game.getWordToGuess(mockedMasker));
         assertEquals("The method should return 10 initial attempts", Integer.valueOf(10), game.getRemainingAttempts());
         assertFalse("Returns that the game continues", game.gameWon());
@@ -46,7 +50,9 @@ public class GameTest {
     public void testChecksForGuessedLetterTrue() {
         WordChoser mockedWChooser = mock(WordChoser.class);
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-        Game game = new Game(mockedWChooser);
+
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         assertTrue("The word contains guessed letter", game.guessLetter('A'));
         assertFalse("Returns that the game continues", game.gameWon());
     }
@@ -55,7 +61,9 @@ public class GameTest {
     public void testChecksForGuessedLetterFalse() {
         WordChoser mockedWChooser = mock(WordChoser.class);
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-        Game game = new Game(mockedWChooser);
+
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         assertFalse("The word does not contain guessed letter", game.guessLetter('D'));
         assertEquals("The method should return 9 attempts after one guess", Integer.valueOf(9), game.getRemainingAttempts());
         assertFalse("Returns that the game continues", game.gameWon());
@@ -65,7 +73,9 @@ public class GameTest {
     public void testChecksForGuessedLowerCaseLetter() {
         WordChoser mockedWChooser = mock(WordChoser.class);
         when(mockedWChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-        Game game = new Game(mockedWChooser);
+
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         assertTrue("The word contains guessed letter", game.guessLetter('a'));
         assertTrue("The guessLetters array contains guessed letter", game.getGuessedLetters().indexOf('a') == -1);
         assertFalse("Returns that the game continues", game.gameWon());
@@ -83,7 +93,8 @@ public class GameTest {
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
 
-        Game game = new Game(mockedWChooser);
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         game.guessLetter('A');
         assertEquals("Returns word with guessed letters", expectedResult, game.getWordToGuess(mockedMasker));
         assertFalse("Returns that the game continues", game.gameWon());
@@ -105,7 +116,8 @@ public class GameTest {
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
 
-        Game game = new Game(mockedWChooser);
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         game.guessLetter('A');
         game.guessLetter('K');
         game.guessLetter('E');
@@ -113,7 +125,7 @@ public class GameTest {
         game.guessLetter('S');
         String resultWord = game.getWordToGuess(mockedMasker);
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
-        assertTrue("Returns that the game is not on anymore", game.gameWon());
+        assertTrue("Returns that the game has been won", game.gameWon());
     }
 
     @Test
@@ -130,13 +142,14 @@ public class GameTest {
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
 
-        Game game = new Game(mockedWChooser);
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         game.guessLetter('O');
         game.guessLetter('N');
         game.guessLetter('D');
         String resultWord = game.getWordToGuess(mockedMasker);
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
-        assertTrue("Returns that the game is not on anymore", game.gameWon());
+        assertTrue("Returns that the game has been won", game.gameWon());
     }
 
     @Test
@@ -153,13 +166,14 @@ public class GameTest {
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
 
-        Game game = new Game(mockedWChooser);
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         game.guessLetter('O');
         game.guessLetter('N');
         game.guessLetter('D');
         String resultWord = game.getWordToGuess(mockedMasker);
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
-        assertTrue("Returns that the game is not on anymore", game.gameOver());
+        assertTrue("Returns that the game is over", game.gameOver());
     }
 
     @Test
@@ -174,7 +188,8 @@ public class GameTest {
         Masker mockedMasker = mock(Masker.class);
         when(mockedMasker.getMaskedWord(wordToGuess, guessedLetters)).thenReturn(expectedResult);
 
-        Game game = new Game(mockedWChooser);
+        String name = "Alex";
+        Game game = new Game(mockedWChooser, name);
         game.guessLetter('Z');
         game.guessLetter('H');
         game.guessLetter('V');
@@ -187,7 +202,7 @@ public class GameTest {
         game.guessLetter('U');
         String resultWord = game.getWordToGuess(mockedMasker);
         assertEquals("Returns the word with guessed letters", expectedResult, resultWord);
-        assertTrue("Returns that the game is not on anymore", game.gameOver());
+        assertTrue("Returns that the game is over", game.gameOver());
     }
 
     @Test
@@ -198,9 +213,7 @@ public class GameTest {
         String name = "Alex";
         String expectedResult = "Alex";
 
-        Game game = new Game(mockedWChooser);
-        assertEquals("Returns the word with guessed letters", null, game.getName());
-        game.setName(name);
-        assertEquals("Returns the word with guessed letters", expectedResult, game.getName());
+        Game game = new Game(mockedWChooser, name);
+        assertEquals("Returns the name of the player", expectedResult, game.getPlayerName());
     }
 }

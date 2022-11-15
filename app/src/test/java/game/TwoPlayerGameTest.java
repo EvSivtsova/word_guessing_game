@@ -28,7 +28,19 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        assertFalse("Returns true if neither of the players won or lost.", game.twoPlayerGameOn(players));
+        assertFalse("Returns false if the first player won or lost.", game.twoPlayerGameOn(players));
+    }
+
+    @Test
+    public void testGameIsOver_WhenSecondPlayerLostOrWon() {
+        Game mockedGame1 = mock(Game.class);
+        when(mockedGame1.gameOver()).thenReturn(false);
+        Game mockedGame2 = mock(Game.class);
+        when(mockedGame2.gameOver()).thenReturn(true);
+        Game[] players =  {mockedGame1, mockedGame2};
+
+        TwoPlayerGame game = new TwoPlayerGame();
+        assertFalse("Returns false if the second player won or lost.", game.twoPlayerGameOn(players));
     }
 
     @Test

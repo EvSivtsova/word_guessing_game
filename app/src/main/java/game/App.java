@@ -56,8 +56,8 @@ public class App {
             scanner.close();
             game.identifyWinner();
             String textColour = game.getLoser() == 1 ? ANSI_GREEN : ANSI_YELLOW;
-            System.out.printf("%s%s       Congratulations, Player %d! You won!        %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, game.getWinner(), ANSI_RESET);
-            System.out.printf("%sPlayer %d, you lost this time! Try your luck again!%s\n", textColour, game.getLoser(), ANSI_RESET);
+            System.out.printf("%s%s       Congratulations, %s! You won!        %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, game.getWinnersName(), ANSI_RESET);
+            System.out.printf("%s%s, you lost this time! Try your luck again!%s\n", textColour, game.getLosersName(), ANSI_RESET);
         }
     }
 }

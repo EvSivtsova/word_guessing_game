@@ -20,6 +20,18 @@ public class TwoPlayerGameTest {
     }
 
     @Test
+    public void testGameIsOver_WhenFirstPlayerLostOrWon() {
+        Game mockedGame1 = mock(Game.class);
+        when(mockedGame1.gameOver()).thenReturn(true);
+        Game mockedGame2 = mock(Game.class);
+        when(mockedGame2.gameOver()).thenReturn(false);
+        Game[] players =  {mockedGame1, mockedGame2};
+
+        TwoPlayerGame game = new TwoPlayerGame();
+        assertFalse("Returns true if neither of the players won or lost.", game.twoPlayerGameOn(players));
+    }
+
+    @Test
     public void testIdentifiesWinner_WhenTheFistPlayerWon() {
         Game mockedGame1 = mock(Game.class);
         when(mockedGame1.gameWon()).thenReturn(true);

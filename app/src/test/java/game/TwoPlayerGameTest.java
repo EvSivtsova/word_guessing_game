@@ -31,7 +31,8 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        assertTrue("Returns true if neither of the players won or lost.", game.twoPlayerGameOn(players));
+        game.assignPlayerOrder(players);
+        assertTrue("Returns true if neither of the players won or lost.", game.twoPlayerGameOn());
     }
 
     @Test
@@ -41,7 +42,8 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        assertFalse("Returns false if the first player won or lost.", game.twoPlayerGameOn(players));
+        game.assignPlayerOrder(players);
+        assertFalse("Returns false if the first player won or lost.", game.twoPlayerGameOn());
     }
 
     @Test
@@ -51,7 +53,8 @@ public class TwoPlayerGameTest {
         Game[] players =  {mockedGame1, mockedGame2};
 
         TwoPlayerGame game = new TwoPlayerGame();
-        assertFalse("Returns false if the second player won or lost.", game.twoPlayerGameOn(players));
+        game.assignPlayerOrder(players);
+        assertFalse("Returns false if the second player won or lost.", game.twoPlayerGameOn());
     }
 
     @Test

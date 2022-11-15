@@ -27,6 +27,7 @@ public class TwoPlayerGame{
     public byte getLoser() {
         return this.loser;
     }
+
     public void identifyWinner() {
         for (byte i = 0; i < this.players.length; i++ ) {
             if (this.players[i].gameWon()) {
@@ -41,9 +42,9 @@ public class TwoPlayerGame{
         }
     }
 
-    public boolean twoPlayerGameOn(Game[] players) {
-        for (byte i = 0; i < players.length; i++ ) {
-            if (players[i].gameOver()) {
+    public boolean twoPlayerGameOn() {
+        for (byte i = 0; i < this.players.length; i++ ) {
+            if (this.players[i].gameOver()) {
                 return false;
             }
         }

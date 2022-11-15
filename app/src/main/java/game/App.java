@@ -47,12 +47,12 @@ public class App {
                         System.out.println("Wrong...");
                     }
                     System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
-                    if (!game.twoPlayerGameOn(game.getPlayers())) {
+                    if (!game.twoPlayerGameOn()) {
                         break;
                     }
                     textColour = ANSI_YELLOW;
                 }
-            } while (game.twoPlayerGameOn(game.getPlayers()));
+            } while (game.twoPlayerGameOn());
             scanner.close();
             game.identifyWinner();
             String textColour = game.getLoser() == 1 ? ANSI_GREEN : ANSI_YELLOW;

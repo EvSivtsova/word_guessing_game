@@ -30,7 +30,22 @@ public class TwoPlayerGameTest {
         TwoPlayerGame game = new TwoPlayerGame();
         game.identifyWinner(players);
         assertEquals("The first player is the winner if they won the game.", 1, game.getWinner());
-        assertEquals("The second player is the loser if the first player won the game.", 2, game.getLoser());
+        assertEquals("The second player lost if the first player won the game.", 2, game.getLoser());
+
+    }
+
+    @Test
+    public void testIdentifiesWinner_WhenTheSecondPlayerWon() {
+        Game mockedGame1 = mock(Game.class);
+        when(mockedGame1.gameWon()).thenReturn(false);
+        Game mockedGame2 = mock(Game.class);
+        when(mockedGame2.gameWon()).thenReturn(true);
+        Game[] players =  {mockedGame1, mockedGame2};
+
+        TwoPlayerGame game = new TwoPlayerGame();
+        game.identifyWinner(players);
+        assertEquals("The second player is the winner if they won the game.", 2, game.getWinner());
+        assertEquals("The first player lost if the second player won the game.", 1, game.getLoser());
 
     }
 

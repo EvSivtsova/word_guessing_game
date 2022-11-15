@@ -6,12 +6,12 @@ public class Game {
     private Integer remainingAttempts;
     private final String word;
     private final ArrayList<Character> guessedLetters = new ArrayList<Character>();
-    private String name;
+    private String playerName;
     
     public Game(WordChoser wordChoser, String playerName) {
         this.word = wordChoser.getRandomWordFromDictionary();
         this.remainingAttempts = 10;
-        this.name = playerName;
+        this.playerName = playerName;
     }
     
     public Integer getRemainingAttempts(){
@@ -52,6 +52,6 @@ public class Game {
     }
 
     public String getPlayerName() {
-        return this.name;
+        return this.playerName;
     }
 }

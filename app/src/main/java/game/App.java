@@ -17,6 +17,7 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
         Scanner scanner = new Scanner(System.in);
+        InputValidation inputCheck = new InputValidation();
 
         System.out.println("\nPlease enter the number of players: 1 or 2");
         Integer numberOfPlayers = Integer.valueOf(scanner.nextLine());
@@ -25,6 +26,10 @@ public class App {
         if (numberOfPlayers == 1) {
             System.out.println("\nPlease enter your name:");
             String playerName = scanner.nextLine();
+            while (!inputCheck.validateName(playerName)) {
+                System.out.println("\nPlease enter your name. Use letters only.");
+                playerName = scanner.nextLine();
+            }
             Game game = new Game(new WordChoser(), playerName);
 
             System.out.printf("\n%sWelcome, %s! Today the word to guess is:%s\n\n", ANSI_BLUE, game.getPlayerName(), ANSI_RESET);

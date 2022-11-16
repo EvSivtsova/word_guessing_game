@@ -8,12 +8,11 @@ public class InputValidation {
     }
 
     public Boolean validateName(String name) {
-        if (name == "Steve") {
-            return true;
-        } else if (name == "Sara") {
-            return true;
-        } else {
-            return false;
+        for (char letter : name.toCharArray()) {
+            if (!this.validateLetter(letter)) {
+                return false;
+            }
         }
+        return true;
     }
 }

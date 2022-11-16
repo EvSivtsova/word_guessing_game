@@ -63,10 +63,20 @@ public class App {
             // ask players to input their names
             System.out.println("\nPlease enter the name for player 1:");
             String player1Name = scanner.nextLine();
+            while (!inputCheck.validateName(player1Name)) {
+                System.out.println("\nPlease enter your name. Use letters only.");
+                player1Name = scanner.nextLine();
+            }
             Game player1 = new Game(new WordChoser(), player1Name);
+
             System.out.println("Please enter the name for player 2:");
             String player2Name = scanner.nextLine();
+            while (!inputCheck.validateName(player2Name)) {
+                System.out.println("\nPlease enter your name. Use letters only.");
+                player2Name = scanner.nextLine();
+            }
             Game player2 = new Game(new WordChoser(), player2Name);
+
             Game[] players =  {player1, player2};
             game.assignPlayerOrder(players);
 

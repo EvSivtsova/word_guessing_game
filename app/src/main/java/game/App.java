@@ -20,10 +20,14 @@ public class App {
         InputValidation inputCheck = new InputValidation();
 
         System.out.println("\nPlease enter the number of players: 1 or 2");
-        Integer numberOfPlayers = Integer.valueOf(scanner.nextLine());
+        String numberOfPlayers = scanner.nextLine();
+        while (!inputCheck.validateNumberOfPlayers(numberOfPlayers)) {
+            System.out.println("\nPlease enter 1 or 2.");
+            numberOfPlayers = scanner.nextLine();
+        }
 
         // Launch one player game
-        if (numberOfPlayers == 1) {
+        if (Integer.parseInt(numberOfPlayers) == 1) {
             System.out.println("\nPlease enter your name:");
             String playerName = scanner.nextLine();
             while (!inputCheck.validateName(playerName)) {
@@ -57,7 +61,7 @@ public class App {
             }
 
         // launch two player game
-        } else if (numberOfPlayers == 2) {
+        } else if (Integer.parseInt(numberOfPlayers) == 2) {
             TwoPlayerGame game = new TwoPlayerGame();
 
             // ask players to input their names

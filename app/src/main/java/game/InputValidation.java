@@ -17,7 +17,7 @@ public class InputValidation {
     }
 
     public Boolean validateNumberOfPlayers(String number) {
-        if (number == "1" || number == "2") {
+        if (number.equals("1")|| number.equals("2")) {
             return true;
         } else {
             return false;

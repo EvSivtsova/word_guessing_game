@@ -15,4 +15,8 @@ public class InputValidation {
         }
         return true;
     }
+
+    public Boolean validateNumberOfPlayers(String number) {
+        return true;
+    }
 }

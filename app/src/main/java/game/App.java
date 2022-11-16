@@ -64,7 +64,7 @@ public class App {
             System.out.println("\nPlease enter the name for player 1:");
             String player1Name = scanner.nextLine();
             while (!inputCheck.validateName(player1Name)) {
-                System.out.println("\nPlease enter your name. Use letters only.");
+                System.out.println("\nPlease enter the name for player 1. Use letters only.");
                 player1Name = scanner.nextLine();
             }
             Game player1 = new Game(new WordChoser(), player1Name);
@@ -72,7 +72,7 @@ public class App {
             System.out.println("Please enter the name for player 2:");
             String player2Name = scanner.nextLine();
             while (!inputCheck.validateName(player2Name)) {
-                System.out.println("\nPlease enter your name. Use letters only.");
+                System.out.println("\nPlease enter the name for player 2. Use letters only.");
                 player2Name = scanner.nextLine();
             }
             Game player2 = new Game(new WordChoser(), player2Name);
@@ -91,6 +91,10 @@ public class App {
                 for (byte i = 0; i < game.getPlayers().length; i++) {
                     System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, game.getPlayers()[i].getPlayerName(), ANSI_RESET, game.getPlayers()[i].getRemainingAttempts());
                     Character guessedLetter = scanner.nextLine().charAt(0);
+                    while (!inputCheck.validateLetter(guessedLetter)) {
+                        System.out.println("\nPlease enter a letter.");
+                        guessedLetter = scanner.nextLine().charAt(0);
+                    }
                     if (game.getPlayers()[i].guessLetter(guessedLetter)) {
                         System.out.println("Right!");
                     } else {

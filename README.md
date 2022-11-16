@@ -51,8 +51,8 @@ To run tests: `app/src/test/java/game`<br>
 
 ## One player game
 
-<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/outputs/one_player_game_output.png">
+<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/outputs/one_player_game_with_name_output.png">
 
 ## Two player game
 
-<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/outputs/two_player_game_output.png">
+<img src="https://github.com/EvSivtsova/word_guessing_game/blob/main/outputs/two_player_game_with_names_output.png">

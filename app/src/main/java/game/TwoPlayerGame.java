@@ -1,5 +1,9 @@
 package game;
 
+import java.lang.Math;
+
+import static java.lang.Math.random;
+
 public class TwoPlayerGame{
 //    this class manages rules of two player game
     private Game[] players = new Game[2];
@@ -7,7 +11,7 @@ public class TwoPlayerGame{
     private byte loser;
 
     private int chooseFirstPlayer() {
-        return (int)Math.random() * 2 + 1;
+        return (int) (Math.random() * 2) + 1;
     }
 
     public void assignPlayerOrder(Game[] gamePlayers) {

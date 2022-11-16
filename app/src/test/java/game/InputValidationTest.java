@@ -19,4 +19,11 @@ public class InputValidationTest {
         InputValidation check = new InputValidation();
         assertFalse("Returns false of char is not a letter", check.validateLetter(letter));
     }
+
+    @Test
+    public void testValidatesName() {
+        String name = "Steve";
+        InputValidation check = new InputValidation();
+        assertTrue("Returns true of name contains only letters", check.validateName(name));
+    }
 }

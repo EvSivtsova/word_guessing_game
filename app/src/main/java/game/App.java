@@ -11,6 +11,7 @@ public class App {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
     public static final String ANSI_RESET = "\u001B[0m";
 
@@ -22,7 +23,7 @@ public class App {
         System.out.println("\nPlease enter the number of players: 1 or 2");
         String numberOfPlayers = scanner.nextLine();
         while (!inputCheck.validateNumberOfPlayers(numberOfPlayers)) {
-            System.out.println("\nPlease enter 1 or 2.");
+            System.out.println(ANSI_RED + "\nPlease enter 1 or 2." + ANSI_RESET);
             numberOfPlayers = scanner.nextLine();
         }
 
@@ -31,7 +32,7 @@ public class App {
             System.out.println("\nPlease enter your name:");
             String playerName = scanner.nextLine();
             while (!inputCheck.validateName(playerName)) {
-                System.out.println("\nPlease enter your name. Use letters only.");
+                System.out.println(ANSI_RED + "\nPlease enter your name. Use letters only." + ANSI_RESET);
                 playerName = scanner.nextLine();
             }
             Game game = new Game(new WordChoser(), playerName);
@@ -43,7 +44,7 @@ public class App {
                 System.out.printf("Enter one letter to guess (%d attempts remaining):\n", game.getRemainingAttempts());
                 Character guessedLetter = scanner.nextLine().charAt(0);
                 while (!inputCheck.validateLetter(guessedLetter)) {
-                    System.out.println("\nPlease enter a letter.");
+                    System.out.println(ANSI_RED + "\nPlease enter a letter." + ANSI_RESET);
                     guessedLetter = scanner.nextLine().charAt(0);
                 }
                 if (game.guessLetter(guessedLetter)) {
@@ -68,7 +69,7 @@ public class App {
             System.out.println("\nPlease enter the name for player 1:");
             String player1Name = scanner.nextLine();
             while (!inputCheck.validateName(player1Name)) {
-                System.out.println("\nPlease enter the name for player 1. Use letters only.");
+                System.out.println(ANSI_RED + "\nPlease enter the name for player 1. Use letters only." + ANSI_RESET);
                 player1Name = scanner.nextLine();
             }
             Game player1 = new Game(new WordChoser(), player1Name);
@@ -76,7 +77,7 @@ public class App {
             System.out.println("Please enter the name for player 2:");
             String player2Name = scanner.nextLine();
             while (!inputCheck.validateName(player2Name)) {
-                System.out.println("\nPlease enter the name for player 2. Use letters only.");
+                System.out.println(ANSI_RED + "\nPlease enter the name for player 2. Use letters only." + ANSI_RESET);
                 player2Name = scanner.nextLine();
             }
             Game player2 = new Game(new WordChoser(), player2Name);
@@ -96,7 +97,7 @@ public class App {
                     System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, game.getPlayers()[i].getPlayerName(), ANSI_RESET, game.getPlayers()[i].getRemainingAttempts());
                     Character guessedLetter = scanner.nextLine().charAt(0);
                     while (!inputCheck.validateLetter(guessedLetter)) {
-                        System.out.println("\nPlease enter a letter.");
+                        System.out.println(ANSI_RED + "\nPlease enter a letter." + ANSI_RESET);
                         guessedLetter = scanner.nextLine().charAt(0);
                     }
                     if (game.getPlayers()[i].guessLetter(guessedLetter)) {

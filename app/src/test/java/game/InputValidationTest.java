@@ -31,7 +31,7 @@ public class InputValidationTest {
     public void testValidatesName_WhenItContainsNumbers() {
         String name = "123";
         InputValidation check = new InputValidation();
-        assertFalse("Returns true of name contains only letters", check.validateName(name));
+        assertFalse("Returns false of name contains numbers", check.validateName(name));
     }
 
     @Test
@@ -49,9 +49,23 @@ public class InputValidationTest {
     }
 
     @Test
-    public void testValidatesName_WhenItContainsDigits() {
+    public void testValidatesName_WhenItContainsSymbols() {
         String name = "Alex&";
         InputValidation check = new InputValidation();
-        assertFalse("Returns true of name contains only letters", check.validateName(name));
+        assertFalse("Returns false of name contains symbols", check.validateName(name));
+    }
+
+    @Test
+    public void testValidatesNumberOfPlayers_WhenItIs1() {
+        String numberOfPlayer = "1";
+        InputValidation check = new InputValidation();
+        assertTrue("Returns true of number of players is 1", check.validateNumberOfPlayers(numberOfPlayer));
+    }
+
+    @Test
+    public void testValidatesNumberOfPlayers_WhenItIsNotANumber() {
+        String numberOfPlayer = "A";
+        InputValidation check = new InputValidation();
+        assertFalse("Returns false of number of players is not a number", check.validateNumberOfPlayers(numberOfPlayer));
     }
 }

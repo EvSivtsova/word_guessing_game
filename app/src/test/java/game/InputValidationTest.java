@@ -68,4 +68,11 @@ public class InputValidationTest {
         InputValidation check = new InputValidation();
         assertFalse("Returns false of number of players is not a number", check.validateNumberOfPlayers(numberOfPlayer));
     }
+
+    @Test
+    public void testValidatesNumberOfPlayers_WhenItIs2() {
+        String numberOfPlayer = "2";
+        InputValidation check = new InputValidation();
+        assertTrue("Returns true of number of players is 2", check.validateNumberOfPlayers(numberOfPlayer));
+    }
 }

@@ -47,4 +47,11 @@ public class InputValidationTest {
         InputValidation check = new InputValidation();
         assertTrue("Returns true of name contains only letters", check.validateName(name));
     }
+
+    @Test
+    public void testValidatesName_WhenItContainsDigits() {
+        String name = "Alex&";
+        InputValidation check = new InputValidation();
+        assertFalse("Returns true of name contains only letters", check.validateName(name));
+    }
 }

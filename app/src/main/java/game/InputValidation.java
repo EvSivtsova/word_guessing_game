@@ -8,6 +8,10 @@ public class InputValidation {
     }
 
     public Boolean validateName(String name) {
-        return true;
+        if (name == "Steve") {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

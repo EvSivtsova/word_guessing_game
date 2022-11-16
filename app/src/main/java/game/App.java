@@ -42,7 +42,7 @@ public class App {
 
             // Determine the outcome of the game
             if (game.gameWon() == true) {
-                System.out.printf("%s%s   Congratulations, %s! You won!   %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, game.getPlayerName(), ANSI_RESET);
+                System.out.printf("%s%s         Congratulations, %s! You won!          %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, game.getPlayerName(), ANSI_RESET);
             } else {
                 System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", ANSI_YELLOW, game.getPlayerName(), ANSI_RESET);
             }

@@ -28,9 +28,16 @@ public class InputValidationTest {
     }
 
     @Test
-    public void testValidatesName2() {
+    public void testValidatesName_WhenItContainsNumbers() {
         String name = "123";
         InputValidation check = new InputValidation();
         assertFalse("Returns true of name contains only letters", check.validateName(name));
+    }
+
+    @Test
+    public void testValidatesName2() {
+        String name = "Sara";
+        InputValidation check = new InputValidation();
+        assertTrue("Returns true of name contains only letters", check.validateName(name));
     }
 }

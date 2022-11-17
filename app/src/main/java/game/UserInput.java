@@ -36,4 +36,18 @@ public class UserInput {
         return guessedLetter;
     }
 
+    public String getPlayerName() {
+        String name;
+        while (true) {
+            try {
+                scanner = new Scanner(System.in);
+                name = scanner.nextLine();
+                InvalidPlayerName.checkPlayerName(name);
+                break;
+            } catch (InvalidPlayerNameException exception) {
+                System.err.println(exception.getMessage());
+            }
+        }
+        return name;
+    }
 }

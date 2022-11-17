@@ -24,13 +24,9 @@ public class App {
         // Launch one player game
         if (numberOfPlayers == 1) {
             print.askToEnterNameForOnePlayer();
-            String playerName = scanner.nextLine();
-            while (!inputCheck.validateName(playerName)) {
-                System.out.println(ANSI_RED + "\nPlease enter your name. Use letters only." + ANSI_RESET);
-                playerName = scanner.nextLine();
-            }
-            Game game = new Game(new WordChoser(), playerName);
+            String playerName = input.getPlayerName();
 
+            Game game = new Game(new WordChoser(), playerName);
             print.displayWelcomeMessageOnePlayer(game.getPlayerName());
 
             // Ask player to input letters
@@ -57,19 +53,11 @@ public class App {
 
             // ask players to input their names
             System.out.println("\nPlease enter the name for player 1:");
-            String player1Name = scanner.nextLine();
-            while (!inputCheck.validateName(player1Name)) {
-                System.out.println(ANSI_RED + "\nPlease enter the name for player 1. Use letters only." + ANSI_RESET);
-                player1Name = scanner.nextLine();
-            }
+            String player1Name = input.getPlayerName();
             Game player1 = new Game(new WordChoser(), player1Name);
 
             System.out.println("Please enter the name for player 2:");
-            String player2Name = scanner.nextLine();
-            while (!inputCheck.validateName(player2Name)) {
-                System.out.println(ANSI_RED + "\nPlease enter the name for player 2. Use letters only." + ANSI_RESET);
-                player2Name = scanner.nextLine();
-            }
+            String player2Name = input.getPlayerName();
             Game player2 = new Game(new WordChoser(), player2Name);
 
             Game[] players =  {player1, player2};

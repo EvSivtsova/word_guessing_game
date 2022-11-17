@@ -30,7 +30,7 @@ public class App {
 
         // Launch one player game
         if (Integer.parseInt(numberOfPlayers) == 1) {
-            System.out.println("\nPlease enter your name:");
+            print.askToEnterNameForOnePlayer();
             String playerName = scanner.nextLine();
             while (!inputCheck.validateName(playerName)) {
                 System.out.println(ANSI_RED + "\nPlease enter your name. Use letters only." + ANSI_RESET);

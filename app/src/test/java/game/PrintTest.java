@@ -25,6 +25,12 @@ public class PrintTest {
         Assert.assertEquals("\nPlease enter the number of players: 1 or 2\n", outContent.toString());
     }
 
+    @Test
+    public void testAsksToInputPlayerName_OnePlayerGame() {
+        print.askToEnterNameForOnePlayer();
+        Assert.assertEquals("\nPlease enter your name:\n", outContent.toString());
+    }
+
     @After
     public void tearDown() {
         System.setOut(standardOut);

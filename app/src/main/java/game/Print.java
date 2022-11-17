@@ -43,6 +43,11 @@ public class Print {
 
     public void displayYouLostMessage(String playerName) {
         System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", ANSI_YELLOW, playerName, ANSI_RESET);
+    }
 
+    public void displayWelcomeMessageAndWordsTwoPlayers(String player1Name, String player1Word, String player2Name, String player2Word) {
+        System.out.println(ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + player1Name + ": " + player1Word + ANSI_RESET);
+        System.out.println(ANSI_YELLOW + player2Name + ": " + player2Word + ANSI_RESET + "\n");
     }
 }

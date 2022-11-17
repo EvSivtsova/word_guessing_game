@@ -64,9 +64,8 @@ public class App {
             game.assignPlayerOrder(players);
 
             // Assign words to guess to players
-            System.out.println(ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET);
-            System.out.println(ANSI_GREEN + game.getPlayers()[0].getPlayerName() + ": " + game.getPlayers()[0].getWordToGuess(new Masker()) + ANSI_RESET);
-            System.out.println(ANSI_YELLOW + game.getPlayers()[1].getPlayerName() + ": " + game.getPlayers()[1].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
+            print.displayWelcomeMessageAndWordsTwoPlayers(game.getPlayers()[0].getPlayerName(), game.getPlayers()[0].getWordToGuess(new Masker()),
+                    game.getPlayers()[1].getPlayerName(), game.getPlayers()[1].getWordToGuess(new Masker()));
 
             // Ask players to input letters
             do {

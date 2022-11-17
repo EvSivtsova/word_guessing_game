@@ -18,8 +18,5 @@ public class InvalidPlayerName extends Throwable {
                 throw new InvalidPlayerNameException("Please only use letters, try again");
             }
         }
-//        if(!Pattern.matches(".*[a-zA-Z].*", name)) {
-//            throw new InvalidPlayerNameException("Please only use letters, try again");
-//        }
     }
 }

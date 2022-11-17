@@ -52,11 +52,11 @@ public class App {
             TwoPlayerGame game = new TwoPlayerGame();
 
             // ask players to input their names
-            System.out.println("\nPlease enter the name for player 1:");
+            print.getPlayer1Name();
             String player1Name = input.getPlayerName();
             Game player1 = new Game(new WordChoser(), player1Name);
 
-            System.out.println("Please enter the name for player 2:");
+            print.getPlayer2Name();
             String player2Name = input.getPlayerName();
             Game player2 = new Game(new WordChoser(), player2Name);
 

@@ -50,4 +50,12 @@ public class Print {
         System.out.println(ANSI_GREEN + player1Name + ": " + player1Word + ANSI_RESET);
         System.out.println(ANSI_YELLOW + player2Name + ": " + player2Word + ANSI_RESET + "\n");
     }
+
+    public void getPlayer1Name() {
+        System.out.println("\nPlease enter the name for player 1:");
+    }
+
+    public void getPlayer2Name() {
+        System.out.println("\nPlease enter the name for player 2:");
+    }
 }

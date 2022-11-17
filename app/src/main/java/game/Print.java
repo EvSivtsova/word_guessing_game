@@ -20,4 +20,8 @@ public class Print {
     public void displayWordToGuessOnePlayer(String word) {
         System.out.println(ANSI_GREEN + word + ANSI_RESET + "\n");
     }
+
+    public void askToInputLetter(Integer remainingAttempts) {
+        System.out.printf("Enter one letter to guess (%d attempts remaining):\n", remainingAttempts);
+    }
 }

@@ -53,6 +53,15 @@ public class PrintTest {
         Assert.assertEquals(expectedResult, outContent.toString());
     }
 
+    @Test
+    public void testAskToInputLetter() {
+        String expectedResult = "Enter one letter to guess (10 attempts remaining):\n";
+
+        Integer remainingAttempts = 10;
+        print.askToInputLetter(remainingAttempts);
+        Assert.assertEquals(expectedResult, outContent.toString());
+    }
+
     @After
     public void tearDown() {
         System.setOut(standardOut);

@@ -42,7 +42,7 @@ public class App {
 
             // Ask player to input letters
             do { print.displayWordToGuessOnePlayer(game.getWordToGuess(new Masker()));
-                System.out.printf("Enter one letter to guess (%d attempts remaining):\n", game.getRemainingAttempts());
+                print.askToInputLetter(game.getRemainingAttempts());
                 Character guessedLetter = scanner.nextLine().charAt(0);
                 while (!inputCheck.validateLetter(guessedLetter)) {
                     System.out.println(ANSI_RED + "\nPlease enter a letter." + ANSI_RESET);

@@ -24,7 +24,7 @@ public class PrintTest {
     }
 
     @Test
-    public void testAsksToInputPlayerNumber1() {
+    public void testAsksToInputPlayerNumber() {
         print.askToInputPlayerNumber();
         Assert.assertEquals("\nPlease enter the number of players: 1 or 2\n", outContent.toString());
     }
@@ -45,7 +45,7 @@ public class PrintTest {
     }
 
     @Test
-    public void testDisplayWordToGuess_OnePlayerGame() {
+    public void testDisplaysWordToGuess_OnePlayerGame() {
         String expectedResult = ANSI_GREEN + "word" + ANSI_RESET + "\n\n";
 
         String word = "word";
@@ -54,12 +54,18 @@ public class PrintTest {
     }
 
     @Test
-    public void testAskToInputLetter() {
+    public void testAsksToInputLetter() {
         String expectedResult = "Enter one letter to guess (10 attempts remaining):\n";
 
         Integer remainingAttempts = 10;
         print.askToInputLetter(remainingAttempts);
         Assert.assertEquals(expectedResult, outContent.toString());
+    }
+
+    @Test
+    public void testPrintsThatTheGuessIsCorrect() {
+        print.printThatTheGuessIsCorrect();
+        Assert.assertEquals("Right!\n\n", outContent.toString());
     }
 
     @After

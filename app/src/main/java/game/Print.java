@@ -24,4 +24,8 @@ public class Print {
     public void askToInputLetter(Integer remainingAttempts) {
         System.out.printf("Enter one letter to guess (%d attempts remaining):\n", remainingAttempts);
     }
+
+    public void printThatTheGuessIsCorrect() {
+        System.out.println("Right!\n");
+    }
 }

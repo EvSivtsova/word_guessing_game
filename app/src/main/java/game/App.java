@@ -49,7 +49,7 @@ public class App {
                     guessedLetter = scanner.nextLine().charAt(0);
                 }
                 if (game.guessLetter(guessedLetter)) {
-                    System.out.println("Right!\n");
+                    print.printThatTheGuessIsCorrect();
                 } else {
                     System.out.println("Wrong...\n");
                 }

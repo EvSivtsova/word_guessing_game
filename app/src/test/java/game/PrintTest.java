@@ -68,6 +68,12 @@ public class PrintTest {
         Assert.assertEquals("Right!\n\n", outContent.toString());
     }
 
+    @Test
+    public void testPrintsThatTheGuessIsWrong() {
+        print.printThatTheGuessIsWrong();
+        Assert.assertEquals("Wrong...\n\n", outContent.toString());
+    }
+
     @After
     public void tearDown() {
         System.setOut(standardOut);

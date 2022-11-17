@@ -51,7 +51,7 @@ public class App {
                 if (game.guessLetter(guessedLetter)) {
                     print.printThatTheGuessIsCorrect();
                 } else {
-                    System.out.println("Wrong...\n");
+                    print.printThatTheGuessIsWrong();
                 }
             } while (game.getRemainingAttempts() > 0 && !game.gameWon());
 

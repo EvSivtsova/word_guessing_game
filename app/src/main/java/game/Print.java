@@ -28,4 +28,8 @@ public class Print {
     public void printThatTheGuessIsCorrect() {
         System.out.println("Right!\n");
     }
+
+    public void printThatTheGuessIsWrong() {
+        System.out.println("Wrong...\n");
+    }
 }

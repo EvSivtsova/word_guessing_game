@@ -10,6 +10,7 @@ import java.io.PrintStream;
 
 public class PrintTest {
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
 
     private final PrintStream standardOut = System.out;
@@ -40,6 +41,15 @@ public class PrintTest {
 
         String playerName = "Alex";
         print.displayWelcomeMessageOnePlayer(playerName);
+        Assert.assertEquals(expectedResult, outContent.toString());
+    }
+
+    @Test
+    public void testDisplayWordToGuess_OnePlayerGame() {
+        String expectedResult = ANSI_GREEN + "word" + ANSI_RESET + "\n\n";
+
+        String word = "word";
+        print.displayWordToGuessOnePlayer(word);
         Assert.assertEquals(expectedResult, outContent.toString());
     }
 

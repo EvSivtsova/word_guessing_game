@@ -38,7 +38,7 @@ public class App {
             }
             Game game = new Game(new WordChoser(), playerName);
 
-            System.out.printf("\n%sWelcome, %s! Today the word to guess is:%s\n\n", ANSI_BLUE, game.getPlayerName(), ANSI_RESET);
+            print.displayWelcomeMessageOnePlayer(game.getPlayerName());
 
             // Ask player to input letters
             do { System.out.println(ANSI_GREEN + game.getWordToGuess(new Masker()) + ANSI_RESET + "\n");

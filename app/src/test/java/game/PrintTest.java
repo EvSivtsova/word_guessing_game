@@ -9,6 +9,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class PrintTest {
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     Print print;
@@ -29,6 +32,15 @@ public class PrintTest {
     public void testAsksToInputPlayerName_OnePlayerGame() {
         print.askToEnterNameForOnePlayer();
         Assert.assertEquals("\nPlease enter your name:\n", outContent.toString());
+    }
+
+    @Test
+    public void testDisplaysWelcomeMessage_OnePlayerGame() {
+        String expectedResult = "\n" + ANSI_BLUE + "Welcome, Alex! Today the word to guess is:" + ANSI_RESET + "\n\n";
+
+        String playerName = "Alex";
+        print.displayWelcomeMessageOnePlayer(playerName);
+        Assert.assertEquals(expectedResult, outContent.toString());
     }
 
     @After

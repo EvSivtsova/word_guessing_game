@@ -11,7 +11,9 @@ import java.io.PrintStream;
 public class PrintTest {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -72,6 +74,15 @@ public class PrintTest {
     public void testPrintsThatTheGuessIsWrong() {
         print.printThatTheGuessIsWrong();
         Assert.assertEquals("Wrong...\n\n", outContent.toString());
+    }
+
+    @Test
+    public void testCongratulatesWinner_OnePlayerGame() {
+        String expectedResult = ANSI_BLUE_BACKGROUND + ANSI_BLACK + "         Congratulations, Alex! You won!          " + ANSI_RESET + "\n\n";
+
+        String playerName = "Alex";
+        print.congratulateWinner(playerName);
+        Assert.assertEquals(expectedResult, outContent.toString());
     }
 
     @After

@@ -20,4 +20,20 @@ public class UserInput {
         }
         return Integer.parseInt(numberOfPlayers);
     }
+
+    public Character getGuessedLetter() {
+        Character guessedLetter;
+        while (true) {
+            try {
+                scanner = new Scanner(System.in);
+                guessedLetter = scanner.nextLine().charAt(0);
+                InvalidGuessedLetter.checkGuessedLetter(guessedLetter);
+                break;
+            } catch (InvalidGuessedLetterException exception) {
+                System.err.println(exception.getMessage());
+            }
+        }
+        return guessedLetter;
+    }
+
 }

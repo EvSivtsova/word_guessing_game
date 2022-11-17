@@ -36,11 +36,7 @@ public class App {
             // Ask player to input letters
             do { print.displayWordToGuessOnePlayer(game.getWordToGuess(new Masker()));
                 print.askToInputLetter(game.getRemainingAttempts());
-                Character guessedLetter = scanner.nextLine().charAt(0);
-                while (!inputCheck.validateLetter(guessedLetter)) {
-                    System.out.println(ANSI_RED + "\nPlease enter a letter." + ANSI_RESET);
-                    guessedLetter = scanner.nextLine().charAt(0);
-                }
+                Character guessedLetter = input.getGuessedLetter();
                 if (game.guessLetter(guessedLetter)) {
                     print.printThatTheGuessIsCorrect();
                 } else {
@@ -89,11 +85,7 @@ public class App {
                 String textColour = ANSI_GREEN;
                 for (byte i = 0; i < game.getPlayers().length; i++) {
                     System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, game.getPlayers()[i].getPlayerName(), ANSI_RESET, game.getPlayers()[i].getRemainingAttempts());
-                    Character guessedLetter = scanner.nextLine().charAt(0);
-                    while (!inputCheck.validateLetter(guessedLetter)) {
-                        System.out.println(ANSI_RED + "\nPlease enter a letter." + ANSI_RESET);
-                        guessedLetter = scanner.nextLine().charAt(0);
-                    }
+                    Character guessedLetter = input.getGuessedLetter();
                     if (game.getPlayers()[i].guessLetter(guessedLetter)) {
                         print.printThatTheGuessIsCorrect();
                     } else {

@@ -4,6 +4,7 @@ public class Print {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
 
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
@@ -38,5 +39,10 @@ public class Print {
 
     public void congratulateWinner(String playerName) {
         System.out.printf("%s%s         Congratulations, %s! You won!          %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, playerName, ANSI_RESET);
+    }
+
+    public void displayYouLostMessage(String playerName) {
+        System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", ANSI_YELLOW, playerName, ANSI_RESET);
+
     }
 }

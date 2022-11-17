@@ -12,6 +12,7 @@ public class PrintTest {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
@@ -82,6 +83,15 @@ public class PrintTest {
 
         String playerName = "Alex";
         print.congratulateWinner(playerName);
+        Assert.assertEquals(expectedResult, outContent.toString());
+    }
+
+    @Test
+    public void testDisplaysYouLostMessage() {
+        String expectedResult = ANSI_YELLOW + "Alex, you lost this time! Try your luck again!" + ANSI_RESET + "\n\n";
+
+        String playerName = "Alex";
+        print.displayYouLostMessage(playerName);
         Assert.assertEquals(expectedResult, outContent.toString());
     }
 

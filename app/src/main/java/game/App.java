@@ -59,7 +59,7 @@ public class App {
             if (game.gameWon() == true) {
                 print.congratulateWinner(game.getPlayerName());
             } else {
-                System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", ANSI_YELLOW, game.getPlayerName(), ANSI_RESET);
+                print.displayYouLostMessage(game.getPlayerName());
             }
 
         // launch two player game

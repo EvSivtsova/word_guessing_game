@@ -19,8 +19,9 @@ public class App {
         App app = new App();
         Scanner scanner = new Scanner(System.in);
         InputValidation inputCheck = new InputValidation();
+        Print print = new Print();
 
-        System.out.println("\nPlease enter the number of players: 1 or 2");
+        print.askToInputPlayerNumber();
         String numberOfPlayers = scanner.nextLine();
         while (!inputCheck.validateNumberOfPlayers(numberOfPlayers)) {
             System.out.println(ANSI_RED + "\nPlease enter 1 or 2." + ANSI_RESET);

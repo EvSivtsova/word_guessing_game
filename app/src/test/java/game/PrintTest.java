@@ -52,7 +52,7 @@ public class PrintTest {
         String expectedResult = ANSI_GREEN + "word" + ANSI_RESET + "\n\n";
 
         String word = "word";
-        print.displayWordToGuessOnePlayer(word);
+        print.displayWordToGuess(word, "");
         Assert.assertEquals(expectedResult, outContent.toString());
     }
 

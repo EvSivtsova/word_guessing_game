@@ -53,7 +53,7 @@ public class GameRunner {
         Game game = new Game(new WordChoser(), playerName);
         print.displayWelcomeMessageOnePlayer(game.getPlayerName());
 
-        do { print.displayWordToGuessOnePlayer(game.getWordToGuess(new Masker()));
+        do { print.displayWordToGuess(game.getWordToGuess(new Masker()), "");
             print.askToInputLetter(game.getRemainingAttempts());
             this.getLetter(game);
         } while (game.getRemainingAttempts() > 0 && !game.gameWon());
@@ -70,7 +70,7 @@ public class GameRunner {
             for (byte i = 0; i < game.getPlayers().length; i++) {
                 print.askToInputLetter(textColour, game.getPlayers()[i].getPlayerName(), game.getPlayers()[i].getRemainingAttempts());
                 this.getLetter(game.getPlayers()[i]);
-                System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
+                print.displayWordToGuess(game.getPlayers()[i].getWordToGuess(new Masker()), textColour);
                 if (!game.twoPlayerGameOn()) {
                     break;
                 }

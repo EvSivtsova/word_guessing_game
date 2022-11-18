@@ -21,14 +21,16 @@ public class Print {
         System.out.printf("\n%sWelcome, %s! Today the word to guess is:%s\n\n", ANSI_BLUE, playerName, ANSI_RESET);
     }
 
-    public void displayWordToGuessOnePlayer(String word) {
-        System.out.println(ANSI_GREEN + word + ANSI_RESET + "\n");
+    public void displayWordToGuess(String word, String colour) {
+        String textColour = colour.compareTo("") == 0 ? ANSI_GREEN : colour;
+        System.out.println(textColour + word + ANSI_RESET + "\n");
     }
 
     public void askToInputLetter(Integer remainingAttempts) {
         System.out.printf("Enter one letter to guess (%d attempts remaining):\n", remainingAttempts);
     }
 
+    // askToInputLetter - two player game
     public void askToInputLetter(String textColour, String playerName, Integer remainingAttempts) {
         System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, playerName, ANSI_RESET, remainingAttempts);
 

@@ -6,7 +6,7 @@ public class UserInput {
     Scanner scanner;
     Print print = new Print();
     public int getNumberOfPlayers() {
-        print.askToInputPlayerNumber();
+        print.askToInputNumberOfPlayers();
         String numberOfPlayers;
         while (true) {
             try {

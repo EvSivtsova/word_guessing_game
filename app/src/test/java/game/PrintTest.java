@@ -28,7 +28,7 @@ public class PrintTest {
 
     @Test
     public void testAsksToInputPlayerNumber() {
-        print.askToInputPlayerNumber();
+        print.askToInputNumberOfPlayers();
         Assert.assertEquals("\nPlease enter the number of players: 1 or 2\n", outContent.toString());
     }
 

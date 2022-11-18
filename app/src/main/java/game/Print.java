@@ -9,7 +9,7 @@ public class Print {
 
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
-    public void askToInputPlayerNumber() {
+    public void askToInputNumberOfPlayers() {
         System.out.println("\nPlease enter the number of players: 1 or 2");
     }
 
@@ -33,7 +33,6 @@ public class Print {
     // askToInputLetter - two player game
     public void askToInputLetter(String textColour, String playerName, Integer remainingAttempts) {
         System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, playerName, ANSI_RESET, remainingAttempts);
-
     }
 
     public void printThatTheGuessIsCorrect() {

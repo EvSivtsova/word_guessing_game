@@ -107,6 +107,20 @@ public class PrintTest {
         Assert.assertEquals(expectedResult, outContent.toString());
     }
 
+    @Test
+    public void testDisplaysWelcomeMessageAndWords_WhenTwoPlayerGame() {
+        String expectedResult = ANSI_BLUE + "\nWelcome! Today the word to guess is:\n" + ANSI_RESET + "\n" +
+                ANSI_GREEN + "Alex" + ": " + "word1" + ANSI_RESET + "\n" +
+                ANSI_YELLOW + "Steve" + ": " + "word2" + ANSI_RESET + "\n\n";
+
+        String player1Name = "Alex";
+        String player2Name = "Steve";
+        String player1Word = "word1";
+        String player2Word = "word2";
+        print.displayWelcomeMessageAndWordsTwoPlayers(player1Name, player1Word, player2Name, player2Word);
+        Assert.assertEquals(expectedResult, outContent.toString());
+    }
+
     @After
     public void tearDown() {
         System.setOut(standardOut);

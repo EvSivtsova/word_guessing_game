@@ -39,6 +39,18 @@ public class PrintTest {
     }
 
     @Test
+    public void testAsksToInputPlayer1Name_TwoPlayerGame() {
+        print.getPlayerNameTwoPlayerGame(1);
+        Assert.assertEquals("\nPlease enter the name for player 1:\n", outContent.toString());
+    }
+
+    @Test
+    public void testAsksToInputPlayer2Name_TwoPlayerGame() {
+        print.getPlayerNameTwoPlayerGame(2);
+        Assert.assertEquals("\nPlease enter the name for player 2:\n", outContent.toString());
+    }
+
+    @Test
     public void testDisplaysWelcomeMessage_OnePlayerGame() {
         String expectedResult = "\n" + ANSI_BLUE + "Welcome, Alex! Today the word to guess is:" + ANSI_RESET + "\n\n";
 

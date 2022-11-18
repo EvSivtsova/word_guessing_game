@@ -32,11 +32,11 @@ public class GameRunner {
     }
 
     public void launchTwoPlayerGame(TwoPlayerGame game) {
-        print.getPlayer1Name();
+        print.getPlayerNameTwoPlayerGame(1);
         String player1Name = input.getPlayerName();
         Game player1 = new Game(new WordChoser(), player1Name);
 
-        print.getPlayer2Name();
+        print.getPlayerNameTwoPlayerGame(2);
         String player2Name = input.getPlayerName();
         Game player2 = new Game(new WordChoser(), player2Name);
 

@@ -59,11 +59,7 @@ public class Print {
         System.out.println(ANSI_YELLOW + player2Name + ": " + player2Word + ANSI_RESET + "\n");
     }
 
-    public void getPlayer1Name() {
-        System.out.println("\nPlease enter the name for player 1:");
-    }
-
-    public void getPlayer2Name() {
-        System.out.println("\nPlease enter the name for player 2:");
+    public void getPlayerNameTwoPlayerGame(int playerCount) {
+        System.out.println("\nPlease enter the name for player " + playerCount + ":");
     }
 }

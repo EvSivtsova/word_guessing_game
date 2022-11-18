@@ -8,12 +8,18 @@ public class GameRunner {
     Print print = new Print();
     UserInput input = new UserInput();
 
-    public void concludeGame_WhenOnePlayer(Game game) {
+    public void concludeOnePlayerGame(Game game) {
         if (game.gameWon() == true) {
             print.congratulateWinner(game.getPlayerName());
         } else {
             print.displayYouLostMessage(game.getPlayerName(), 1);
         }
+    }
+
+    public void concludeTwoPlayerGame(TwoPlayerGame game) {
+        game.identifyWinner();
+        print.congratulateWinner(game.getWinnersName());
+        print.displayYouLostMessage(game.getLosersName(), game.getLoser());
     }
 
     public void getLetter(Game game) {
@@ -52,7 +58,7 @@ public class GameRunner {
             this.getLetter(game);
         } while (game.getRemainingAttempts() > 0 && !game.gameWon());
 
-        this.concludeGame_WhenOnePlayer(game);
+        this.concludeOnePlayerGame(game);
     }
 
     public void runTwoPlayerGame() {
@@ -71,10 +77,7 @@ public class GameRunner {
                 textColour = ANSI_YELLOW;
             }
         } while (game.twoPlayerGameOn());
-
-        game.identifyWinner();
-        print.congratulateWinner(game.getWinnersName());
-        print.displayYouLostMessage(game.getLosersName(), game.getLoser());
+        this.concludeTwoPlayerGame(game);
     }
 
     public void run() {

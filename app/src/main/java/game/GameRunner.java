@@ -41,46 +41,49 @@ public class GameRunner {
                 game.getPlayers()[1].getPlayerName(), game.getPlayers()[1].getWordToGuess(new Masker()));
     }
 
+    public void runOnePlayerGame() {
+        print.askToEnterNameForOnePlayer();
+        String playerName = input.getPlayerName();
+        Game game = new Game(new WordChoser(), playerName);
+        print.displayWelcomeMessageOnePlayer(game.getPlayerName());
+
+        do { print.displayWordToGuessOnePlayer(game.getWordToGuess(new Masker()));
+            print.askToInputLetter(game.getRemainingAttempts());
+            this.getLetter(game);
+        } while (game.getRemainingAttempts() > 0 && !game.gameWon());
+
+        this.concludeGame_WhenOnePlayer(game);
+    }
+
+    public void runTwoPlayerGame() {
+        TwoPlayerGame game = new TwoPlayerGame();
+        launchTwoPlayerGame(game);
+
+        do {
+            String textColour = ANSI_GREEN;
+            for (byte i = 0; i < game.getPlayers().length; i++) {
+                print.askToInputLetter(textColour, game.getPlayers()[i].getPlayerName(), game.getPlayers()[i].getRemainingAttempts());
+                this.getLetter(game.getPlayers()[i]);
+                System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
+                if (!game.twoPlayerGameOn()) {
+                    break;
+                }
+                textColour = ANSI_YELLOW;
+            }
+        } while (game.twoPlayerGameOn());
+
+        game.identifyWinner();
+        print.congratulateWinner(game.getWinnersName());
+        print.displayYouLostMessage(game.getLosersName(), game.getLoser());
+    }
+
     public void run() {
         int numberOfPlayers = input.getNumberOfPlayers();
 
         if (numberOfPlayers == 1) {
-        // Launch one player game
-            print.askToEnterNameForOnePlayer();
-            String playerName = input.getPlayerName();
-            Game game = new Game(new WordChoser(), playerName);
-            print.displayWelcomeMessageOnePlayer(game.getPlayerName());
-
-            // Ask player to input letters
-            do { print.displayWordToGuessOnePlayer(game.getWordToGuess(new Masker()));
-                print.askToInputLetter(game.getRemainingAttempts());
-                this.getLetter(game);
-            } while (game.getRemainingAttempts() > 0 && !game.gameWon());
-
-            this.concludeGame_WhenOnePlayer(game);
-
+            this.runOnePlayerGame();
         } else if (numberOfPlayers == 2) {
-            // launch two player game
-            TwoPlayerGame game = new TwoPlayerGame();
-            launchTwoPlayerGame(game);
-
-            // Ask players to input letters
-            do {
-                String textColour = ANSI_GREEN;
-                for (byte i = 0; i < game.getPlayers().length; i++) {
-                    print.askToInputLetter(textColour, game.getPlayers()[i].getPlayerName(), game.getPlayers()[i].getRemainingAttempts());
-                    this.getLetter(game.getPlayers()[i]);
-                    System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
-                    if (!game.twoPlayerGameOn()) {
-                        break;
-                    }
-                    textColour = ANSI_YELLOW;
-                }
-            } while (game.twoPlayerGameOn());
-
-            // Determine the outcome of the game
-            print.congratulateWinner(game.getWinnersName());
-            print.displayYouLostMessage(game.getLosersName(), game.getLoser());
+            this.runTwoPlayerGame();
         }
     }
 }

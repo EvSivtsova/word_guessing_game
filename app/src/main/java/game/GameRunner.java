@@ -6,6 +6,8 @@ public class GameRunner {
     public static final String ANSI_RESET = "\u001B[0m";
 
     Print print = new Print();
+    UserInput input = new UserInput();
+
     public void concludeGame_WhenOnePlayer(Game game) {
         if (game.gameWon() == true) {
             print.congratulateWinner(game.getPlayerName());
@@ -14,8 +16,16 @@ public class GameRunner {
         }
     }
 
+    public void getLetter(Game game) {
+        Character guessedLetter = input.getGuessedLetter();
+        if (game.guessLetter(guessedLetter)) {
+            print.printThatTheGuessIsCorrect();
+        } else {
+            print.printThatTheGuessIsWrong();
+        }
+    }
+
     public void run() {
-        UserInput input = new UserInput();
         int numberOfPlayers = input.getNumberOfPlayers();
 
         // Launch one player game
@@ -28,12 +38,7 @@ public class GameRunner {
             // Ask player to input letters
             do { print.displayWordToGuessOnePlayer(game.getWordToGuess(new Masker()));
                 print.askToInputLetter(game.getRemainingAttempts());
-                Character guessedLetter = input.getGuessedLetter();
-                if (game.guessLetter(guessedLetter)) {
-                    print.printThatTheGuessIsCorrect();
-                } else {
-                    print.printThatTheGuessIsWrong();
-                }
+                this.getLetter(game);
             } while (game.getRemainingAttempts() > 0 && !game.gameWon());
 
             // Determine the outcome of the game
@@ -63,13 +68,8 @@ public class GameRunner {
             do {
                 String textColour = ANSI_GREEN;
                 for (byte i = 0; i < game.getPlayers().length; i++) {
-                    System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, game.getPlayers()[i].getPlayerName(), ANSI_RESET, game.getPlayers()[i].getRemainingAttempts());
-                    Character guessedLetter = input.getGuessedLetter();
-                    if (game.getPlayers()[i].guessLetter(guessedLetter)) {
-                        print.printThatTheGuessIsCorrect();
-                    } else {
-                        print.printThatTheGuessIsWrong();
-                    }
+                    print.askToInputLetter(textColour, game.getPlayers()[i].getPlayerName(), game.getPlayers()[i].getRemainingAttempts());
+                    this.getLetter(game.getPlayers()[i]);
                     System.out.println(textColour + game.getPlayers()[i].getWordToGuess(new Masker()) + ANSI_RESET + "\n");
                     if (!game.twoPlayerGameOn()) {
                         break;

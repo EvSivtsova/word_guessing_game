@@ -4,8 +4,17 @@ public class GameRunner {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
+
+    Print print = new Print();
+    public void concludeGame_WhenOnePlayer(Game game) {
+        if (game.gameWon() == true) {
+            print.congratulateWinner(game.getPlayerName());
+        } else {
+            print.displayYouLostMessage(game.getPlayerName(), 1);
+        }
+    }
+
     public void run() {
-        Print print = new Print();
         UserInput input = new UserInput();
         int numberOfPlayers = input.getNumberOfPlayers();
 
@@ -28,11 +37,7 @@ public class GameRunner {
             } while (game.getRemainingAttempts() > 0 && !game.gameWon());
 
             // Determine the outcome of the game
-            if (game.gameWon() == true) {
-                print.congratulateWinner(game.getPlayerName());
-            } else {
-                print.displayYouLostMessage(game.getPlayerName());
-            }
+            this.concludeGame_WhenOnePlayer(game);
 
             // launch two player game
         } else if (numberOfPlayers == 2) {
@@ -74,10 +79,8 @@ public class GameRunner {
             } while (game.twoPlayerGameOn());
 
             // Determine the outcome of the game
-            game.identifyWinner();
-            String textColour = game.getLoser() == 1 ? ANSI_GREEN : ANSI_YELLOW;
             print.congratulateWinner(game.getWinnersName());
-            System.out.printf("%s%s, you lost this time! Try your luck again!%s\n", textColour, game.getLosersName(), ANSI_RESET);
+            print.displayYouLostMessage(game.getLosersName(), game.getLoser());
         }
     }
 }

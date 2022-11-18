@@ -41,8 +41,9 @@ public class Print {
         System.out.printf("%s%s         Congratulations, %s! You won!          %s\n\n", ANSI_BLUE_BACKGROUND, ANSI_BLACK, playerName, ANSI_RESET);
     }
 
-    public void displayYouLostMessage(String playerName) {
-        System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", ANSI_YELLOW, playerName, ANSI_RESET);
+    public void displayYouLostMessage(String playerName, int loserNumber) {
+        String textColour = loserNumber == 1 ? ANSI_GREEN : ANSI_YELLOW;
+        System.out.printf("%s%s, you lost this time! Try your luck again!%s\n\n", textColour, playerName, ANSI_RESET);
     }
 
     public void displayWelcomeMessageAndWordsTwoPlayers(String player1Name, String player1Word, String player2Name, String player2Word) {

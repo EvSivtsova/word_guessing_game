@@ -88,10 +88,10 @@ public class PrintTest {
 
     @Test
     public void testDisplaysYouLostMessage() {
-        String expectedResult = ANSI_YELLOW + "Alex, you lost this time! Try your luck again!" + ANSI_RESET + "\n\n";
+        String expectedResult = ANSI_GREEN + "Alex, you lost this time! Try your luck again!" + ANSI_RESET + "\n\n";
 
         String playerName = "Alex";
-        print.displayYouLostMessage(playerName);
+        print.displayYouLostMessage(playerName, 1);
         Assert.assertEquals(expectedResult, outContent.toString());
     }
 

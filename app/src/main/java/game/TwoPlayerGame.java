@@ -60,4 +60,8 @@ public class TwoPlayerGame{
         }
         return true;
     }
+
+    public void run() {
+        System.out.println("two player game");
+    }
 }

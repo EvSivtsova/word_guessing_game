@@ -25,11 +25,27 @@ public class GameRunner {
         }
     }
 
+    public void launchTwoPlayerGame(TwoPlayerGame game) {
+        print.getPlayer1Name();
+        String player1Name = input.getPlayerName();
+        Game player1 = new Game(new WordChoser(), player1Name);
+
+        print.getPlayer2Name();
+        String player2Name = input.getPlayerName();
+        Game player2 = new Game(new WordChoser(), player2Name);
+
+        Game[] players =  {player1, player2};
+        game.assignPlayerOrder(players);
+
+        print.displayWelcomeMessageAndWordsTwoPlayers(game.getPlayers()[0].getPlayerName(), game.getPlayers()[0].getWordToGuess(new Masker()),
+                game.getPlayers()[1].getPlayerName(), game.getPlayers()[1].getWordToGuess(new Masker()));
+    }
+
     public void run() {
         int numberOfPlayers = input.getNumberOfPlayers();
 
-        // Launch one player game
         if (numberOfPlayers == 1) {
+        // Launch one player game
             print.askToEnterNameForOnePlayer();
             String playerName = input.getPlayerName();
             Game game = new Game(new WordChoser(), playerName);
@@ -41,28 +57,12 @@ public class GameRunner {
                 this.getLetter(game);
             } while (game.getRemainingAttempts() > 0 && !game.gameWon());
 
-            // Determine the outcome of the game
             this.concludeGame_WhenOnePlayer(game);
 
-            // launch two player game
         } else if (numberOfPlayers == 2) {
+            // launch two player game
             TwoPlayerGame game = new TwoPlayerGame();
-
-            // ask players to input their names
-            print.getPlayer1Name();
-            String player1Name = input.getPlayerName();
-            Game player1 = new Game(new WordChoser(), player1Name);
-
-            print.getPlayer2Name();
-            String player2Name = input.getPlayerName();
-            Game player2 = new Game(new WordChoser(), player2Name);
-
-            Game[] players =  {player1, player2};
-            game.assignPlayerOrder(players);
-
-            // Assign words to guess to players
-            print.displayWelcomeMessageAndWordsTwoPlayers(game.getPlayers()[0].getPlayerName(), game.getPlayers()[0].getWordToGuess(new Masker()),
-                    game.getPlayers()[1].getPlayerName(), game.getPlayers()[1].getWordToGuess(new Masker()));
+            launchTwoPlayerGame(game);
 
             // Ask players to input letters
             do {

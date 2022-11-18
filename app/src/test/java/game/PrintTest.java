@@ -78,6 +78,16 @@ public class PrintTest {
     }
 
     @Test
+    public void testAsksToInputLetter_WhenTwoPlayerGame() {
+        String expectedResult = ANSI_GREEN+ "Alex" + ANSI_RESET + ": Enter one letter to guess (10 attempts remaining):\n";
+
+        String textColour = ANSI_GREEN;
+        String playerName = "Alex";
+        Integer remainingAttempts = 10;
+        print.askToInputLetter(textColour, playerName, remainingAttempts);
+        Assert.assertEquals(expectedResult, outContent.toString());
+    }
+    @Test
     public void testPrintsThatTheGuessIsCorrect() {
         print.printThatTheGuessIsCorrect();
         Assert.assertEquals("Right!\n\n", outContent.toString());

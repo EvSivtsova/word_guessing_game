@@ -32,7 +32,7 @@ public class Print {
 
     // askToInputLetter - two player game
     public void askToInputLetter(String textColour, String playerName, Integer remainingAttempts) {
-        System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n ", textColour, playerName, ANSI_RESET, remainingAttempts);
+        System.out.printf("%s%s%s: Enter one letter to guess (%d attempts remaining):\n", textColour, playerName, ANSI_RESET, remainingAttempts);
     }
 
     public void printThatTheGuessIsCorrect() {

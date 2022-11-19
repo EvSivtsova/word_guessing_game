@@ -1,5 +1,6 @@
 package game;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -100,7 +101,7 @@ public class PrintTest {
     }
 
     @Test
-    public void testCongratulatesWinner_OnePlayerGame() {
+    public void testCongratulatesWinner() {
         String expectedResult = ANSI_BLUE_BACKGROUND + ANSI_BLACK + "         Congratulations, Alex! You won!          " + ANSI_RESET + "\n\n";
 
         String playerName = "Alex";

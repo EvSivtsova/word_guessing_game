@@ -15,6 +15,7 @@ public class GameRunnerTest {
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -25,12 +26,25 @@ public class GameRunnerTest {
         System.setOut(new PrintStream(outContent));
         print = new Print();
     }
+
     @Test
     public void testCongratulatesWinner_WhenOnePlayerGame() {
         Game game = mock(Game.class);
         when(game.gameWon()).thenReturn(true);
         when(game.getPlayerName()).thenReturn("Alex");
-        String expectedResult = ANSI_BLUE_BACKGROUND + ANSI_BLACK + "         Congratulations, Alex! You won!          " + ANSI_RESET + "\n\n";;
+        String expectedResult = ANSI_BLUE_BACKGROUND + ANSI_BLACK + "         Congratulations, Alex! You won!          " + ANSI_RESET + "\n\n";
+
+        GameRunner gameRunner = new GameRunner();
+        gameRunner.concludeOnePlayerGame(game);
+        Assert.assertEquals(expectedResult, outContent.toString());
+    }
+
+    @Test
+    public void testDisplaysGameLostMessage_WhenOnePlayerGame() {
+        Game game = mock(Game.class);
+        when(game.gameWon()).thenReturn(false);
+        when(game.getPlayerName()).thenReturn("Alex");
+        String expectedResult = ANSI_GREEN + "Alex, you lost this time! Try your luck again!" + ANSI_RESET + "\n\n";
 
         GameRunner gameRunner = new GameRunner();
         gameRunner.concludeOnePlayerGame(game);
